@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics - English Medium | NCSS Kuppiya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="css-fixes.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding-top: 0;
+}
+
+/* ========== SUB-HEADER BAR STYLES (NEW - FROM INDEX) ========== */
+.sub-header-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: linear-gradient(135deg, 
+        rgba(192, 192, 192, 0.25) 0%, 
+        rgba(169, 169, 169, 0.2) 50%,
+        rgba(192, 192, 192, 0.25) 100%);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 2rem;
+    z-index: 9990;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.sub-header-bar.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sub-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 0.5rem;
+}
+
+.sub-header-logo {
+    height: 2rem;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.sub-header-logo.left {
+    margin-right: 0;
+}
+
+.sub-header-logo.right {
+    margin-left: 0;
+}
+
+.sub-header-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.95);
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Enhanced Dark Background - Orange Theme */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%) !important;
+}
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: floatOrb 20s infinite ease-in-out;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+    top: 60%;
+    right: 10%;
+    animation-delay: 3s;
+}
+
+.orb-3 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #b45309, #c0c0c0);
+    bottom: 10%;
+    left: 30%;
+    animation-delay: 6s;
+}
+
+@keyframes floatOrb {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+    50% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
+    75% {
+        transform: translate(30px, 50px) scale(1.05);
+    }
+}
+
+.sinhala-font {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) translateX(0);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateY(-20px) translateX(10px);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(245, 158, 11, 0.3), 0 0 20px rgba(245, 158, 11, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(245, 158, 11, 0.5), 0 0 30px rgba(245, 158, 11, 0.3);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-load {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.animate-float {
+    animation: float 8s ease-in-out infinite;
+}
+
+.animate-pulse {
+    animation: pulse 4s ease-in-out infinite;
+}
+
+/* Enhanced Glass Effects */
+.bg-glass {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        var(--glass-color, rgba(255, 255, 255, 0.05)) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Header Styles - Dark Maroon */
+.header-glass {
+    background: linear-gradient(45deg, 
+        rgba(128, 0, 0, 0.9) 0%, 
+        rgba(90, 0, 0, 0.85) 50%,
+        rgba(128, 0, 0, 0.9) 100%);
+    backdrop-filter: blur(25px) saturate(200%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 4px 40px rgba(0, 0, 0, 0.4),
+        0 8px 60px rgba(128, 0, 0, 0.3),
+        inset 0 0 24px rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header-glass.scrolled {
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* ========== NEW LOGO ADJUSTMENTS (FROM INDEX) ========== */
+.logo-container-adjusted {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+}
+
+.logo-link-adjusted {
+    display: block;
+    text-decoration: none;
+}
+
+.logo-adjusted {
+    width: 200px;
+    height: auto;
+    display: block;
+    filter: 
+        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))
+        drop-shadow(0 8px 16px rgba(128, 0, 0, 0.6))
+        drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
+    transition: all 0.3s ease;
+}
+
+.logo-link-adjusted:hover .logo-adjusted {
+    transform: scale(1.08);
+    filter: 
+        drop-shadow(0 6px 12px rgba(0, 0, 0, 0.9))
+        drop-shadow(0 12px 24px rgba(128, 0, 0, 0.8))
+        drop-shadow(0 0 25px rgba(0, 0, 0, 0.5));
+}
+
+/* ========== ORIGINAL LOGO STYLES (KEEP FOR COMPATIBILITY) ========== */
+.logo-image {
+    filter: 
+        drop-shadow(0 4px 8px rgba(0,0,0,0.4))
+        drop-shadow(0 8px 16px rgba(128, 0, 0, 0.5));
+    transition: all 0.3s ease;
+    height: 140px;
+    width: 140px;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    filter: 
+        drop-shadow(0 6px 12px rgba(0,0,0,0.5))
+        drop-shadow(0 12px 24px rgba(128, 0, 0, 0.6));
+}
+
+.header-title {
+    background: linear-gradient(135deg, #ffffff, #c0c0c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    font-size: 2.5rem;
+}
+
+.header-subtitle {
+    background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.1rem;
+}
+
+.text-container:hover .header-title {
+    transform: translateX(4px);
+}
+
+.pattern-math {
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0%, transparent 20%);
+}
+
+.particles {
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0%, transparent 20%);
+}
+
+.rounded-b-3xl {
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+
+/* ========== HAMBURGER MENU STYLES (NEW - FROM INDEX) ========== */
+.hamburger-right {
+    background: rgba(128, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+}
+
+.hamburger-right:hover {
+    background: rgba(128, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hamburger-bars {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.hamburger-bars .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    margin: 3px 0;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-right:hover .bar {
+    background: #c0c0c0;
+}
+
+/* Side Menu Panel */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+.side-menu.active {
+    display: block;
+}
+
+.menu-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.menu-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(128, 0, 0, 0.97) 0%, 
+        rgba(90, 0, 0, 0.95) 50%,
+        rgba(128, 0, 0, 0.97) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.side-menu.active .menu-panel {
+    transform: translateX(0);
+}
+
+.menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.menu-title-area {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-main-title {
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.menu-sub-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.menu-category {
+    margin-bottom: 1.5rem;
+}
+
+.category-title {
+    color: #c0c0c0;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+}
+
+.category-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(-5px);
+}
+
+.item-icon {
+    margin-right: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.menu-contact {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-link {
+    display: block;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.9), rgba(255, 255, 255, 0.9));
+    color: #800000;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Tab Styles - Enhanced with Orange */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-button {
+    padding: 1rem 2rem;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-button.active {
+    background: rgba(245, 158, 11, 0.9);
+    color: white;
+    transform: translateY(-2px);
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 
+        0 8px 25px rgba(245, 158, 11, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.tab-button:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced Resource Items with Orange */
+.resource-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid #f59e0b;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resource-item:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+.year-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #f59e0b;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.year-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(245, 158, 11, 0.2);
+}
+
+/* Enhanced Button Styles with Orange */
+.download-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 4px 15px rgba(245, 158, 11, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 20px rgba(245, 158, 11, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.download-btn-outline {
+    background: transparent;
+    color: #f59e0b;
+    border: 2px solid #f59e0b;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+}
+
+.download-btn-outline:hover {
+    background: #f59e0b;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+/* Enhanced Page Title Styling with Orange */
+.page-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+.page-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    color: #c0c0c0;
+    text-align: center;
+    margin-bottom: 3rem;
+    opacity: 0.8;
+}
+
+/* Enhanced Back Button */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-5px);
+    box-shadow: 
+        0 6px 20px rgba(0,0,0,0.4),
+        0 0 15px rgba(245, 158, 11, 0.3);
+}
+
+/* Enhanced Footer Styles - Dark Maroon */
+.footer {
+    background: linear-gradient(135deg, 
+        rgba(128, 0, 0, 0.9) 0%, 
+        rgba(90, 0, 0, 0.85) 50%,
+        rgba(128, 0, 0, 0.9) 100%);
+    backdrop-filter: blur(25px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.4);
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem 1.5rem;
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+/* Physics decorative elements */
+.physics-decoration {
+    position: absolute;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.physics-1 {
+    top: 20%;
+    left: 5%;
+    font-size: 8rem;
+    transform: rotate(-15deg);
+}
+
+.physics-2 {
+    bottom: 15%;
+    right: 5%;
+    font-size: 6rem;
+    transform: rotate(25deg);
+}
+
+.file-size {
+    font-size: 0.875rem;
+    color: #c0c0c0;
+    margin-top: 0.25rem;
+}
+
+.resource-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.paper-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .logo-adjusted {
+        width: 180px;
+    }
+    .logo-container-adjusted {
+        margin-left: 1.25rem;
+    }
+    .sub-header-bar {
+        padding: 0.5rem 1.5rem;
+    }
+    .sub-header-content {
+        gap: 0.4rem;
+    }
+    .sub-header-logo {
+        height: 1.8rem;
+    }
+    .sub-header-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+    }
+    body {
+        padding-top: 2.8rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .paper-grid {
+        grid-template-columns: 1fr;
+    }
+    .resource-grid {
+        grid-template-columns: 1fr;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    .logo-adjusted {
+        width: 160px;
+    }
+    .logo-container-adjusted {
+        margin-left: 1rem;
+    }
+    .hamburger-right {
+        width: 45px;
+        height: 45px;
+        margin-right: 0.75rem;
+    }
+    .menu-panel {
+        width: 300px;
+        padding: 1.25rem;
+    }
+    .sub-header-bar {
+        padding: 0.45rem 1rem;
+    }
+    .sub-header-content {
+        gap: 0.4rem;
+    }
+    .sub-header-logo {
+        height: 1.5rem;
+    }
+    .sub-header-text {
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+    }
+    body {
+        padding-top: 2.4rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .logo-adjusted {
+        width: 140px;
+    }
+    .logo-container-adjusted {
+        margin-left: 0.75rem;
+    }
+    .sub-header-bar {
+        padding: 0.4rem 0.75rem;
+    }
+    .sub-header-content {
+        gap: 0.3rem;
+    }
+    .sub-header-logo {
+        height: 1.3rem;
+    }
+    .sub-header-text {
+        font-size: 0.55rem;
+        letter-spacing: 0.08em;
+    }
+    body {
+        padding-top: 2.1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-adjusted {
+        width: 120px;
+    }
+    .logo-container-adjusted {
+        margin-left: 0.5rem;
+    }
+    .menu-panel {
+        width: 280px;
+    }
+    .sub-header-text {
+        font-size: 0.5rem;
+        letter-spacing: 0.05em;
+    }
+    body {
+        padding-top: 1.9rem !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo-adjusted {
+        width: 100px;
+    }
+    .sub-header-logo {
+        height: 1rem;
+    }
+    .sub-header-text {
+        font-size: 0.45rem;
+        letter-spacing: 0.03em;
+    }
+    body {
+        padding-top: 1.7rem !important;
+    }
+}
+
+.topic-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #f59e0b;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.topic-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+.topic-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.section-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+/* Replace ALL green and gray text colors with silver */
+.text-green-800,
+.text-green-700,
+.text-gray-800,
+.text-gray-700 {
+    color: #c0c0c0 !important;
+}
+</style>
+</head>
+<body class="page-load">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+    </div>
+
+    <!-- Header -->
+	<!-- ========== COMPLETE HEADER HTML (from index) ========== -->
+<!-- Copy this and replace the entire <header> section in your BIO_EN.html -->
+
+
+
+<!-- Header - Logo Left (adjusted), Hamburger Right -->
+<header class="text-white p-0 w-full shadow-lg header-glass rounded-b-3xl transition-all duration-300" id="mainHeader" role="banner">
+    <div class="container mx-auto px-4 py-3 sm:px-6 sm:py-4">
+        <div class="flex items-center justify-between w-full">
+            <!-- Left: Logo Only - Adjusted -->
+            <div class="logo-container-adjusted">
+                <a href="index.html" class="logo-link-adjusted">
+                    <img src="images/Kuppiya png.png" 
+                         alt="NCSS Kuppiya Logo" 
+                         class="logo-adjusted">
+                </a>
+            </div>
+            
+            <!-- Right: Hamburger Menu -->
+            <button id="menuToggle" class="hamburger-right" aria-label="Open menu">
+                <div class="hamburger-bars">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Slide-out Menu Panel -->
+<div id="sideMenu" class="side-menu">
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    
+    <div class="menu-panel">
+        <button id="closeMenu" class="menu-close" aria-label="Close menu">×</button>
+        
+        <div class="menu-title-area">
+            <h2 class="menu-main-title">NCSS කුප්පිය</h2>
+            <p class="menu-sub-text">Select Your Medium</p>
+        </div>
+        
+        <div class="menu-category">
+            <h3 class="category-title">English Medium</h3>
+            <div class="category-links">
+                <a href="BIO EN.html" class="menu-item"><span class="item-icon">🧬</span> Biology</a>
+                <a href="chemistry-english.html" class="menu-item"><span class="item-icon">🧪</span> Chemistry</a>
+                <a href="physics-english.html" class="menu-item"><span class="item-icon">⚛️</span> Physics</a>
+                <a href="combined-maths-english.html" class="menu-item"><span class="item-icon">📐</span> Combined Maths</a>
+                <a href="ict-english.html" class="menu-item"><span class="item-icon">💻</span> ICT</a>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h3 class="category-title sinhala-font">සිංහල මාධ්‍ය</h3>
+            <div class="category-links">
+                <a href="biology-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">🧬</span> ජීවවිද්‍යාව</a>
+                <a href="chemistry-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">🧪</span> රසායන විද්‍යාව</a>
+                <a href="physics-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">⚛️</span> භෞතික විද්‍යාව</a>
+                <a href="combined-maths-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">📐</span> සංයුක්ත ගණිතය</a>
+                <a href="ict-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">💻</span> තොරතුරු තාක්ෂණය</a>
+            </div>
+        </div>
+        
+        <div class="menu-contact">
+            <a href="#footer" class="contact-link" id="menuContact">Contact Us</a>
+        </div>
+    </div>
+</div>
+         			
+
+    <main class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- Back Button -->
+        <a href="ENGLISH MED.html" class="back-button">
+            <span class="mr-2">←</span>
+            Back to English Medium
+        </a>
+
+        <!-- Page Title -->
+        <h1 class="page-title">Physics - English Medium</h1>
+        <p class="page-subtitle">Complete A/L Physics Resources (1990-2021) - All Materials Included</p>
+
+        <!-- Tab Navigation -->
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+            <button class="tab-button active" data-tab="past-papers">📝 Past Papers</button>
+            <button class="tab-button" data-tab="classified">🎯 Classified</button>
+            <button class="tab-button" data-tab="resource-books">📚 Resource Books</button>
+            <button class="tab-button" data-tab="practical">🔧 Practical & Misc</button>
+        </div>
+        
+        <!-- Past Papers Tab -->
+        <div class="tab-content active" id="past-papers">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Past Papers (1990-2021) - Complete Collection</h2>
+            
+            <!-- 2021 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4 flex items-center">
+                    2021 A/L Examination
+                    <span class="resource-badge">Latest</span>
+                </h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1_Ju62SYA14FWAovLWqSCi_ommb5dKQXn/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1GHvlm0aVQH5uf_cFJXI7xPkHEmBnwhTE/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1eJW2B80xbdRvE4fDQKTZ88YS8wBSpEY_/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2020 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1_GYhROKZGo7l-Wyx8ZycAguoUxaT0fmj/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1uojEtgMWrMjv8CU1u4mxjNqEcJNXwdgQ/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1zwP3mdREeCGgV0EpFPXgTkDRssv3F46Q/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2019 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2019 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1fzu0TqacEam5BMyUN2Swv4gJaOgtVdrJ/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1Dnsbwrdcs_8bshz8TTgcdo83RjA-vHWw/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/11git9l4AuEVZRQSnPYoC7D7U0DVZ-RK-/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2018 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2018 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1h-QzQEheLaASjhP-LOPTdzhTAfGYcNyE/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1tb3f_bABH8uRat6WYGVaalEnBkJvgAGN/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1hFFSRoHfEk6o8rRddFMWhdhrX_iudisC/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2017 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2017 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1S2reES_k18e1Yt2nHfSQWRUjSrVVBcCt/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1HBWqG3knoTuPdQC7MKG6Z1mCq4DRJrrn/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1cryx_xoznHtCibB8XbnkyNq4rO8UY6qw/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2016 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2016 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1FRQNSqgQI8RslTTv7Cn76cqcfu2qEbOV/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1rcmyM5ItNzflELemH3gpVx_h17tudMPU/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/19fBNOWff0WLFHM2765vtjWip779liehz/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2015 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2015 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1s86A6FjHHKtET_jI0EQQKVHp3VvpsRcm/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1PFP0htmvSwAIx7xkP6N0jdd4P82374dK/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1GVDMTj2DfL2hAd7KdbYbXyGoDK8-yBQX/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2014 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2014 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/15qdJugt9zD69TBhY_EsMkzSVBNri6TJi/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1BzqxpJNz2l3RdAXj9irhCKatfLFcbFuS/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1yuwo1FxDOOukHWeHrGSv7Hx5xKa9wwfF/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2013 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2013 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/14rcNtGiIarSGPLCAhTRRLMW1ssV5D8jz/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1GHvlm0aVQH5uf_cFJXI7xPkHEmBnwhTE/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1YXgJ3AnRzfihSsMRfEGrnzYxH4K4PfWh/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2012 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2012 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1SQJOXyGccWNbDlB7yC_NaYgJsg4kGw50/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/16BzVUfN6gF6PkYhYmaBYCTOC8YbhYGHd/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1gi6yJTZH2cwbb6lgT_1_M04YAwXdLfAw/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2011 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2011 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/11GfuT_lDnMoJpXA82BmYV51b1MJLdmFV/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1kDteGLUzocIlDDpov17wlEzgwoEUPLmH/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1ge1TMpz1gWkt7MpS0SmPbEXJYBj6I8mw/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2010 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2010 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/19ooGNw-waOnRcN4TGN7iOwN1jG84Uwls/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1QobZY63TfKJ4uqGq5SQqdYL7nyvJrq5Z/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1hacY-xcVfs270C-ESgrh4VJXSR44Bvg8/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2009 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2009 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1we_EqHPygvCnIInBM_9o2I1rMaSiM-UQ/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1hmfe5p7_ieX8quBKkEvHFx8c9TmIAw4J/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1PhZA3YHvriauzZmKAx04diAOKbNKfUtG/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2008 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2008 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1gvIkjPoxVi5m3bRGapHaymKRTsf61j1-/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/11HjSz85NIY7IsvKF2Wi4RUeTdIq15B6Z/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/16BBkdyCNczhl9GhE5OfdoFlQx86uPsqS/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2007 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2007 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1xQoc6xc31QFj_v9FFZ0Sl4Y6l8Mz633X/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1Lj5VXpc9-z0b9m971N_fJLZ5Z4Ky2RWj/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1AJGbHOK1miODvHTDL7SU7FQ7Regg93Cn/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2006 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2006 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1kIFukX6JD3aaklK1n1RHt7NG-7-dVCZH/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1met29AAtB7CvORegQk7CkP37JefN6SvM/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1fwF4PSU1rED-sfmj_t9wC-a8zkqreMKk/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2005 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2005 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1FrHT3bjc14Lm8PN6oQ4FhoesVdHIAqXT/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/13ziCsD3_zuFX_s4BEbT3gRciDtSKkBOR/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1ejLKduCx5PmaJGi1IpAS3GmVRPIpJAhK/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2004 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2004 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1KuUzyze9vew_AXuedaim3lANGhaQscGl/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1VIuX-RiGWJM29zSK4Rl6KDxkMSswdpQ4/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/18DnkBIKKCVFGl8E2hHVh9-SeLWLaSS15/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2003 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2003 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1aJG7A9ySlrQkyLPJlvTJEKUv7TzD11Ju/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1CQ768B2FWOpbQCdVGj7Bu2LgZicNXm76/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1-SZBF78j3IkYLAEth-DZlzxjnXniepRB/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2002 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2002 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1cQsphc2vCPqZsYYBUKoHPwm0okK0kUFF/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1-BptoVqkEIMx8CYMA4YTaQz29-m6CRbV/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1IOfvCzngmvwIZZP5PvhaKdw2bC3f0nOi/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2001 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2001 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1l1YDN3-KoiE__poX1NcjmSgXimgkdNZE/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2000 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">2000 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1gfYtpMxGBZ7Dl_pJmFNzigfxkwxdpmkQ/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1999 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1999 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1PdKPZpp_0_q2jfEs0mWra7vorlfZJ9tA/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1k-GNcUmtr3StnbMqPV7xphBrdm9tGClH/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1998 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1998 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1Xc-AznAxrJU6JpuZWiFIHDJGH6tP1cG3/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1XvFppiUXoFZVatvCqVvLUrDATtVFg0qT/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1dFR69jZr9L2IhSN4pTp6ttU90diP7vPN/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1997 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1997 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1SZDFMCoXx8T1G2sC941XhyU3OEERxHeK/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1UPz5PoFnMk4VCVAJRMeVLtbRsdmE_E25/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1996 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1996 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1IO-4dPHjymFdmMdf4C9PDjm8acUV131G/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/16osIMXYlJwj9qExizF7qXoU6389gQIrO/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1pbTr8zHf0fAUEawVvQ8iCXfqseNtU1QA/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1995 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1995 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1Ov6A7nx70vLkvojcJRshG_-J7SfbnBXn/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1osGrsArXK32fqRK3CyqP7Myg7mrc7wuH/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1z6vUz-3z11-FauXDJ4uNoYKhq5oplvcg/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1994 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1994 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/10S6caku70i5eAECir57y64KduR2_L-mM/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1bVRT29bPQKbmdAAOoGewLBLJrIIjVs_0/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1993 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1993 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/108ZXY0nTcyU0Ugq8jjAOOIUhtZpV_hwU/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1Ay3uXKrX-7eV7yVYE8key9nsAb89XwLa/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1LDhB8sWhPAyvJn1tlgB_n5PCZW8QieRP/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📝 Marking Scheme
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1992 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1992 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1m8CgXn1R4dmphk9oFF_0IY-F2u4Pd7pV/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1GpjclmeF8sqwDRg1OLfPULC6ppV1c4KP/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1991 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1991 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1Zfm2NghC0UCoGncpYMftT9dpXFKuGgFu/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/10HSCK5JyStMAkDtVUJXlzKuh5F_9kFDz/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                </div>
+            </div>
+
+            <!-- 1990 -->
+            <div class="year-card">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">1990 A/L Examination</h3>
+                <div class="paper-grid">
+                    <a href="https://drive.google.com/file/d/1mKlfFE7PV7AfiM_mFNQgvz2FhJi40_y5/view?usp=drivesdk" target="_blank" class="download-btn">
+                        📄 MCQ Paper
+                    </a>
+                    <a href="https://drive.google.com/file/d/1uJmnNohZk2y8jVbcPZvumYlTVYXvZjWt/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                        📄 Essay Paper
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Classified Tab -->
+        <div class="tab-content" id="classified">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Classified Questions - Complete Collection</h2>
+            
+            <!-- Sub Tab Navigation -->
+            <div class="flex flex-wrap justify-center mb-8">
+                <button class="sub-tab-button active" data-sub-tab="classified-mcq">🎯 MCQ Questions</button>
+                <button class="sub-tab-button" data-sub-tab="classified-essay">📖 Essay Questions</button>
+            </div>
+            
+            <!-- Classified MCQ Sub Tab -->
+            <div class="sub-tab-content active" id="classified-mcq">
+                <h3 class="text-2xl font-bold mb-6 text-gray-700 text-center">Classified MCQ - All 11 Topics</h3>
+                <div class="resource-grid">
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Measurements</h3>
+                        <a href="https://drive.google.com/file/d/1CcSe400qhLMQZ-nOawOFhHUutTXuBVtW/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Mechanics</h3>
+                        <a href="https://drive.google.com/file/d/1zcJ9dyDlj2Rfgf22QYUYMay5gjuTnimk/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Gravitational Field</h3>
+                        <a href="https://drive.google.com/file/d/1FqzT3j2w6nf5_onBW2cIkxGZw2UhH6MD/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Properties of Matter</h3>
+                        <a href="https://drive.google.com/file/d/1TMhiu79UwEbgrwtiWQyNFVU2G-mdDuQW/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Heat</h3>
+                        <a href="https://drive.google.com/file/d/1X28lZPvrVHQ-HqDyczKaZulkCmw_ee22/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Oscillations & Waves</h3>
+                        <a href="https://drive.google.com/file/d/148Pr5_tyU3mm2gQybR7mT92nlEOFQZMS/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Current Electricity</h3>
+                        <a href="https://drive.google.com/file/d/1bax5zvrDixrjJdOaOI5hTVTpdPz_amaX/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Electrostatic Force Field</h3>
+                        <a href="https://drive.google.com/file/d/1Uq8Zxd_caAsv2XmZwyEgwyxV_V7xxst6/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Electromagnetism</h3>
+                        <a href="https://drive.google.com/file/d/1UFPnwqUOnjSlYuDJAn0RzH6ejEzxX0Ms/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Electronics</h3>
+                        <a href="https://drive.google.com/file/d/103Tn2kLWrooFYcp57FqvuiyGMbZt2JKP/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Matter & Radiation</h3>
+                        <a href="https://drive.google.com/file/d/1UZ9WmKTErCm6P96--xml6TpdOXmsi_k3/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classified Essay Sub Tab -->
+            <div class="sub-tab-content" id="classified-essay">
+                <h3 class="text-2xl font-bold mb-6 text-gray-700 text-center">Classified Essay - All 12 Topics</h3>
+                <div class="resource-grid">
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Mechanics</h3>
+                        <a href="https://drive.google.com/file/d/1-iGTwWLnC9pQ3RJV01obLGJrES5RV8mt/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Gravitational Field</h3>
+                        <a href="https://drive.google.com/file/d/1mf77FHOhXrsbW2rcTbSxX4vQYBkopL32/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Elasticity</h3>
+                        <a href="https://drive.google.com/file/d/1tczK-V2eiewGF7Q5HPlQp7wbwNgBSOV5/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Surface Tension</h3>
+                        <a href="https://drive.google.com/file/d/1-tE8BhZr9-bYwmI-mK4S656_UEMgrLiB/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Viscosity</h3>
+                        <a href="https://drive.google.com/file/d/1DF9Sc83_AMlhtWOoZc5FyXn9XZ0ydcwH/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Heat</h3>
+                        <a href="https://drive.google.com/file/d/193kzyG9fkDhxBgaUtLdpyPjk3XLQrybO/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Sound</h3>
+                        <a href="https://drive.google.com/file/d/1GSSWfQ_TTlPzszBHj7vuKeEAYAr96BfB/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Optics</h3>
+                        <a href="https://drive.google.com/file/d/1WSa0azdWAlQjl6-PI1OzdXXwUFjONp3p/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Electric Field</h3>
+                        <a href="https://drive.google.com/file/d/1cMoQgubjqqdjgxoMbLCXUVzi-sYYLVRe/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Current Electricity</h3>
+                        <a href="https://drive.google.com/file/d/1X1Ifs9mtuRaEBpcRa848By1AxOKuYpo9/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Electromagnetic Induction</h3>
+                        <a href="https://drive.google.com/file/d/1StEzVu9opYqTY5mDrCABnCPNROmPdg9w/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Electronics</h3>
+                        <a href="https://drive.google.com/file/d/1F2m3GD-3c9Amga8CU1XbDHNUETurCRBm/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                    <div class="topic-card">
+                        <h3 class="font-bold text-xl text-green-700 mb-2">Matter & Radiation</h3>
+                        <a href="https://drive.google.com/file/d/1puI0bm85iwgKIk-echHNA0bRlQ9uZUXu/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resource Books Tab -->
+        <div class="tab-content" id="resource-books">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Resource Books - All 10 Units</h2>
+            <div class="resource-grid">
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 1 - Measurements</h3>
+                    <a href="https://drive.google.com/file/d/1KzZzlhbdgTEnhLUsKtgPK1B4cd5QNICx/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 2 - Mechanics</h3>
+                    <a href="https://drive.google.com/file/d/11d_yEQ2qXYcZzaHlujJP6OR-9G2Sv1eB/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 3 - Force & Motion</h3>
+                    <a href="https://drive.google.com/file/d/1MbpqBSBlmla8mS0JO7-fpSbpE_SH-Fz7/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 4 - Work, Energy & Power</h3>
+                    <a href="https://drive.google.com/file/d/1emEyNwQwfjnkYf5nF67SyMLPH_Yn970m/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 5 - Mechanics of Solids</h3>
+                    <a href="https://drive.google.com/file/d/15V-_A-8XAEyyfEm8Yz8NF_H6WXWnya5N/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 6 - Gravitational Field</h3>
+                    <a href="https://drive.google.com/file/d/1Feo9MD-d7H20pQor_h71U9qTAVeOfkB3/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 7 - Thermal Physics</h3>
+                    <a href="https://drive.google.com/file/d/1lkVX_eU-LZGcW5Nf6Sdf_hIXdQXdEWJ4/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 8 - Oscillations & Waves</h3>
+                    <a href="https://drive.google.com/file/d/1ZJoy45TjBL2iF8b8_7_aKfPYsOAHR0lw/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 9 - Sound</h3>
+                    <a href="https://drive.google.com/file/d/1pQpM2IBOsL7bAwl6S6u8Tq9DJXLiULyo/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+                <div class="topic-card">
+                    <h3 class="font-bold text-xl text-green-700 mb-2">Unit 10 - Electrostatics</h3>
+                    <a href="https://drive.google.com/file/d/1z6j36pMGd65c2y7UEcEWTNOnVSrRwQLE/view?usp=drivesdk" target="_blank" class="download-btn mt-2">
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practical & Misc Tab -->
+        <div class="tab-content" id="practical">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Practical Book & Additional Resources</h2>
+            <div class="space-y-4">
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-green-700 mb-2">Physics Practical Book - English Medium</h3>
+                            <p class="text-gray-600 mb-2">Complete practical guide for A/L Physics experiments</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1Fy0m_fDLvEvPg1Q4O5OyUKfqmcIrPtLv/view?usp=drivesdk" target="_blank" class="download-btn ml-4">
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- ========== COMPLETE FOOTER HTML (from index) ========== -->
+<!-- Copy this and replace the entire <footer> section in your BIO_EN.html -->
+
+<footer class="footer" role="contentinfo" id="footer">
+    <div class="footer-content">
+        <!-- Social Media Icons -->
+        <div class="social-icons" role="navigation" aria-label="Social Media Links">
+            <a href="https://web.facebook.com/ncsslk" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our Facebook page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/nalanda_science_society/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our Instagram page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/nalandancss?s=20" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our X (Twitter) page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            <a href="https://whatsapp.com/channel/0029VaozV2m0LKZIxJ7iml3J" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Join our WhatsApp Channel">
+                <img src="images/whatsapp-svgrepo-com.svg" alt="WhatsApp" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </a>
+            <a href="https://www.youtube.com/@NalandaCollegeScienceSociety" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our YouTube channel">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links">
+            <a href="https://ncss.site" target="_blank" rel="noopener noreferrer" class="footer-link">Official NCSS Website</a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            <p>&copy; 2025 Nalanda College Science Society. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        /* ========== UPDATED SCRIPTS FOR BIO_EN.html ========== */
+/* This combines: (1) Tab switching (BIO page-specific), (2) Header scroll, (3) Hamburger menu functionality (from index) */
+
+    // ========== TAB SWITCHING FUNCTIONALITY (BIO page-specific) ==========
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Show corresponding content
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // ========== STICKY HEADER ON SCROLL (from index) ==========
+    const header = document.getElementById('mainHeader');
+    const subHeaderBar = document.getElementById('subHeaderBar');
+    
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        
+        if (scrollPosition > 50) {
+            header.classList.add('scrolled');
+            if (subHeaderBar) {
+                subHeaderBar.classList.add('hidden');
+            }
+        } else {
+            header.classList.remove('scrolled');
+            if (subHeaderBar) {
+                subHeaderBar.classList.remove('hidden');
+            }
+        }
+    });
+
+    // ========== MENU FUNCTIONALITY (from index) ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Get elements
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        const menuContact = document.getElementById('menuContact');
+        
+        // Open menu
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                sideMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        // Close menu - X button
+        if (closeMenu) {
+            closeMenu.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu - click on backdrop (outside panel)
+        if (menuBackdrop) {
+            menuBackdrop.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu - Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && sideMenu.classList.contains('active')) {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Contact Us link - scroll to footer
+        if (menuContact) {
+            menuContact.addEventListener('click', function(event) {
+                event.preventDefault();
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                setTimeout(function() {
+                    const footer = document.querySelector('footer');
+                    if (footer) {
+                        footer.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 300);
+            });
+        }
+        
+        // Close menu when clicking any other menu link
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                setTimeout(function() {
+                    sideMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 300);
+            });
+        });
+    });
+
+    // ========== SMOOTH SCROLL FOR ANCHOR LINKS (from index) ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    </script>
+    <script src="font-override.js"></script>
+</body>
+</html>

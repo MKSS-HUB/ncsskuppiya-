@@ -1,0 +1,3231 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Mathematics - Sinhala Medium | NCSS Kuppiya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="css-fixes.css">
+    <style>
+       /* ========== UPDATED STYLES FOR combined-maths-sinhala.html ========== */
+/* This combines: (1) Common base styles, (2) Combined Maths Sinhala page-specific styles (BLUE THEME), (3) Header/Footer styles from index */
+
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+        color: #ffffff;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+        padding-top: 0;
+    }
+
+    /* Add space after main header for content */
+    main {
+        margin-top: 2rem !important;
+    }
+
+    /* ========== SUB-HEADER BAR STYLES ========== */
+    .sub-header-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: linear-gradient(135deg, 
+            rgba(192, 192, 192, 0.25) 0%, 
+            rgba(169, 169, 169, 0.2) 50%,
+            rgba(192, 192, 192, 0.25) 100%);
+        backdrop-filter: blur(15px) saturate(150%);
+        -webkit-backdrop-filter: blur(15px) saturate(150%);
+        border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+        box-shadow: 
+            0 4px 20px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        padding: 0.6rem 2rem;
+        z-index: 9990;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .sub-header-bar.hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .sub-header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1400px;
+        margin: 0 auto;
+        gap: 0.5rem;
+    }
+
+    .sub-header-logo {
+        height: 2rem;
+        width: auto;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .sub-header-logo.left {
+        margin-right: 0;
+    }
+
+    .sub-header-logo.right {
+        margin-left: 0;
+    }
+
+    .sub-header-text {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: rgba(255, 255, 255, 0.95);
+        text-transform: uppercase;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    /* Enhanced Dark Background - Blue Theme */
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(0, 100, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%) !important;
+    }
+
+    .floating-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        animation: floatOrb 20s infinite ease-in-out;
+    }
+
+    .orb-1 {
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, #3B82F6, #2563EB);
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .orb-2 {
+        width: 350px;
+        height: 350px;
+        background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+        top: 60%;
+        right: 10%;
+        animation-delay: 3s;
+    }
+
+    .orb-3 {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, #3B82F6, #c0c0c0);
+        bottom: 10%;
+        left: 30%;
+        animation-delay: 6s;
+    }
+
+    @keyframes floatOrb {
+        0%, 100% {
+            transform: translate(0, 0) scale(1);
+        }
+        25% {
+            transform: translate(50px, -50px) scale(1.1);
+        }
+        50% {
+            transform: translate(-30px, 30px) scale(0.9);
+        }
+        75% {
+            transform: translate(30px, 50px) scale(1.05);
+        }
+    }
+
+    .sinhala-font {
+        font-family: 'Noto Sans Sinhala', sans-serif;
+    }
+
+    /* Animations */
+    @keyframes float {
+        0%, 100% { 
+            transform: translateY(0) translateX(0);
+            opacity: 0.7;
+        }
+        50% { 
+            transform: translateY(-20px) translateX(10px);
+            opacity: 1;
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.7; }
+        50% { transform: scale(1.1); opacity: 0.9; }
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes shine {
+        0% { left: -100%; }
+        50%, 100% { left: 100%; }
+    }
+
+    @keyframes slideInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes textGlow {
+        0%, 100% {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+        50% {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-load {
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .animate-float {
+        animation: float 8s ease-in-out infinite;
+    }
+
+    .animate-pulse {
+        animation: pulse 4s ease-in-out infinite;
+    }
+
+    /* Enhanced Glass Effects */
+    .bg-glass {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            var(--glass-color, rgba(255, 255, 255, 0.05)) 100%
+        );
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    /* ========== HEADER STYLES (from index) ========== */
+    .header-glass {
+        background: linear-gradient(45deg, 
+            rgba(128, 0, 0, 0.9) 0%, 
+            rgba(90, 0, 0, 0.85) 50%,
+            rgba(128, 0, 0, 0.9) 100%);
+        backdrop-filter: blur(25px) saturate(200%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+            0 4px 40px rgba(0, 0, 0, 0.4),
+            0 8px 60px rgba(128, 0, 0, 0.3),
+            inset 0 0 24px rgba(255, 255, 255, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .header-glass.scrolled {
+        box-shadow: 0 8px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Logo Container - Adjusted position */
+    .logo-container-adjusted {
+        display: flex;
+        align-items: center;
+        margin-left: 1.5rem;
+    }
+
+    .logo-link-adjusted {
+        display: block;
+        text-decoration: none;
+    }
+
+    .logo-adjusted {
+        width: 200px;
+        height: auto;
+        display: block;
+        filter: 
+            drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))
+            drop-shadow(0 8px 16px rgba(128, 0, 0, 0.6))
+            drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
+        transition: all 0.3s ease;
+    }
+
+    .logo-link-adjusted:hover .logo-adjusted {
+        transform: scale(1.08);
+        filter: 
+            drop-shadow(0 6px 12px rgba(0, 0, 0, 0.9))
+            drop-shadow(0 12px 24px rgba(128, 0, 0, 0.8))
+            drop-shadow(0 0 25px rgba(0, 0, 0, 0.5));
+    }
+
+    /* Hamburger on Right */
+    .hamburger-right {
+        background: rgba(128, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-right: 1rem;
+    }
+
+    .hamburger-right:hover {
+        background: rgba(128, 0, 0, 0.5);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hamburger-bars {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+    }
+
+    .hamburger-bars .bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        margin: 3px 0;
+        border-radius: 1px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-right:hover .bar {
+        background: #c0c0c0;
+    }
+
+    /* Side Menu Panel */
+    .side-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: none;
+    }
+
+    .side-menu.active {
+        display: block;
+    }
+
+    .menu-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+    }
+
+    .menu-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 350px;
+        height: 100%;
+        background: linear-gradient(135deg, 
+            rgba(128, 0, 0, 0.97) 0%, 
+            rgba(90, 0, 0, 0.95) 50%,
+            rgba(128, 0, 0, 0.97) 100%);
+        backdrop-filter: blur(20px) saturate(180%);
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.5);
+        padding: 1.5rem;
+        overflow-y: auto;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .side-menu.active .menu-panel {
+        transform: translateX(0);
+    }
+
+    .menu-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .menu-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+    }
+
+    .menu-title-area {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-main-title {
+        font-family: 'Noto Sans Sinhala', sans-serif;
+        font-size: 1.8rem;
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+
+    .menu-sub-text {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+    }
+
+    .menu-category {
+        margin-bottom: 1.5rem;
+    }
+
+    .category-title {
+        color: #c0c0c0;
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+    }
+
+    .category-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 0.7rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .menu-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateX(-5px);
+    }
+
+    .item-icon {
+        margin-right: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    .menu-contact {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-link {
+        display: block;
+        padding: 0.9rem;
+        background: linear-gradient(135deg, rgba(192, 192, 192, 0.9), rgba(255, 255, 255, 0.9));
+        color: #800000;
+        text-align: center;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ========== FOOTER STYLES (from index) ========== */
+    .footer {
+        background: linear-gradient(135deg, 
+            rgba(128, 0, 0, 0.9) 0%, 
+            rgba(90, 0, 0, 0.85) 50%,
+            rgba(128, 0, 0, 0.9) 100%);
+        backdrop-filter: blur(25px);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.4);
+        margin-top: 4rem;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem 1.5rem;
+        color: white;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .social-icon:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-8px) scale(1.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .social-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .footer-link {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: white;
+    }
+
+    .footer-link:hover::after {
+        width: 100%;
+    }
+
+    .footer-copyright {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+    }
+
+    /* ========== COMBINED MATHS SINHALA PAGE-SPECIFIC STYLES (BLUE THEME) ========== */
+    /* Tab Styles - Enhanced with Blue */
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.5s ease-in;
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    .tab-button {
+        padding: 1rem 2rem;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-weight: 600;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .tab-button.active {
+        background: rgba(59, 130, 246, 0.9);
+        color: white;
+        transform: translateY(-2px);
+        border-color: rgba(59, 130, 246, 0.5);
+        box-shadow: 
+            0 8px 25px rgba(59, 130, 246, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .tab-button:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-1px);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Enhanced Resource Items - Blue Theme */
+    .resource-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        border-left: 4px solid #3B82F6;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .resource-item:hover {
+        transform: translateX(5px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 
+            0 8px 25px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(59, 130, 246, 0.2);
+    }
+
+    .year-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 1rem;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid #3B82F6;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .year-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.4),
+            0 0 25px rgba(59, 130, 246, 0.2);
+    }
+
+    /* Enhanced Button Styles - Blue Theme */
+    .download-btn {
+        background: linear-gradient(135deg, #3B82F6, #2563EB);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+            0 4px 15px rgba(59, 130, 246, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 6px 20px rgba(59, 130, 246, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .download-btn-outline {
+        background: transparent;
+        color: #3B82F6;
+        border: 2px solid #3B82F6;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .download-btn-outline:hover {
+        background: #3B82F6;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .marking-btn {
+        background: linear-gradient(135deg, #60A5FA, #3B82F6);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+            0 4px 15px rgba(96, 165, 250, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .marking-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 6px 20px rgba(96, 165, 250, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    /* Enhanced Page Title Styling - Blue Theme */
+    .page-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+        margin: 2rem 0 1rem 0;
+        text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        animation: textGlow 3s ease-in-out infinite;
+    }
+
+    .page-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.4rem;
+        color: #c0c0c0;
+        text-align: center;
+        margin-bottom: 3rem;
+        opacity: 0.8;
+    }
+
+    /* Enhanced Back Button */
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .back-button:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(-5px);
+        box-shadow: 
+            0 6px 20px rgba(0,0,0,0.4),
+            0 0 15px rgba(59, 130, 246, 0.3);
+    }
+
+    .file-size {
+        font-size: 0.875rem;
+        color: #c0c0c0;
+        margin-top: 0.25rem;
+    }
+
+    .resource-badge {
+        background: linear-gradient(135deg, #3B82F6, #2563EB);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .missing-badge {
+        background: linear-gradient(135deg, #ff6b6b, #ff5252);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .paper-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    /* ========== RESPONSIVE STYLES ========== */
+    @media (max-width: 1024px) {
+        .logo-adjusted {
+            width: 180px;
+        }
+        .logo-container-adjusted {
+            margin-left: 1.25rem;
+        }
+        .sub-header-bar {
+            padding: 0.5rem 1.5rem;
+        }
+        .sub-header-content {
+            gap: 0.4rem;
+        }
+        .sub-header-logo {
+            height: 1.8rem;
+        }
+        .sub-header-text {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+        }
+        body {
+            padding-top: 2.8rem !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .logo-adjusted {
+            width: 160px;
+        }
+        .logo-container-adjusted {
+            margin-left: 1rem;
+        }
+        .hamburger-right {
+            width: 45px;
+            height: 45px;
+            margin-right: 0.75rem;
+        }
+        .menu-panel {
+            width: 300px;
+            padding: 1.25rem;
+        }
+        .paper-grid {
+            grid-template-columns: 1fr;
+        }
+        .sub-header-bar {
+            padding: 0.45rem 1rem;
+        }
+        .sub-header-content {
+            gap: 0.4rem;
+        }
+        .sub-header-logo {
+            height: 1.5rem;
+        }
+        .sub-header-text {
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+        }
+        body {
+            padding-top: 2.4rem !important;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .logo-adjusted {
+            width: 140px;
+        }
+        .logo-container-adjusted {
+            margin-left: 0.75rem;
+        }
+        .sub-header-bar {
+            padding: 0.4rem 0.75rem;
+        }
+        .sub-header-content {
+            gap: 0.3rem;
+        }
+        .sub-header-logo {
+            height: 1.3rem;
+        }
+        .sub-header-text {
+            font-size: 0.55rem;
+            letter-spacing: 0.08em;
+        }
+        body {
+            padding-top: 2.1rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo-adjusted {
+            width: 120px;
+        }
+        .logo-container-adjusted {
+            margin-left: 0.5rem;
+        }
+        .menu-panel {
+            width: 280px;
+        }
+        .sub-header-text {
+            font-size: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        body {
+            padding-top: 1.9rem !important;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .logo-adjusted {
+            width: 100px;
+        }
+        .sub-header-logo {
+            height: 1rem;
+        }
+        .sub-header-text {
+            font-size: 0.45rem;
+            letter-spacing: 0.03em;
+        }
+        body {
+            padding-top: 1.7rem !important;
+        }
+    }
+    /* ========== NUCLEAR FONT OVERRIDE PATCH ========== */
+/* This overrides ALL previous font declarations */
+
+/* Force fonts.css to win */
+* {
+    font-family: inherit !important;
+}
+
+/* Specifically target problematic elements */
+body,
+html[lang="si"] body {
+    font-family: 'Abhaya Libre', 'Noto Sans Sinhala', sans-serif !important;
+}
+
+.sinhala-font,
+.menu-main-title,
+html[lang="si"] .sinhala-font {
+    font-family: 'Yaldevi', 'Noto Sans Sinhala', sans-serif !important;
+}
+
+.footer,
+.footer-content,
+.footer-link,
+.footer-copyright,
+.footer-links,
+.social-icon {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.menu-panel *:not(.sinhala-font) {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.menu-panel .sinhala-font {
+    font-family: 'Yaldevi', 'Noto Sans Sinhala', sans-serif !important;
+}
+
+/* Force English fonts on Sinhala page for non-Sinhala text */
+html[lang="si"] *:not(.sinhala-font):not(.menu-main-title):not(.category-title.sinhala-font) {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Force headings in Sinhala page */
+html[lang="si"] h1,
+html[lang="si"] h2,
+html[lang="si"] h3,
+html[lang="si"] .page-title {
+    font-family: 'Yaldevi', 'Noto Sans Sinhala', sans-serif !important;
+}
+    </style>
+</head>
+<body class="page-load">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+    </div>
+
+    <!-- Header -->
+    <!-- ========== COMPLETE HEADER HTML (from index) ========== -->
+<!-- Copy this and replace the entire <header> section in your BIO_EN.html -->
+
+
+
+<!-- Header - Logo Left (adjusted), Hamburger Right -->
+<header class="text-white p-0 w-full shadow-lg header-glass rounded-b-3xl transition-all duration-300" id="mainHeader" role="banner">
+    <div class="container mx-auto px-4 py-3 sm:px-6 sm:py-4">
+        <div class="flex items-center justify-between w-full">
+            <!-- Left: Logo Only - Adjusted -->
+            <div class="logo-container-adjusted">
+                <a href="index.html" class="logo-link-adjusted">
+                    <img src="images/Kuppiya png.png" 
+                         alt="NCSS Kuppiya Logo" 
+                         class="logo-adjusted">
+                </a>
+            </div>
+            
+            <!-- Right: Hamburger Menu -->
+            <button id="menuToggle" class="hamburger-right" aria-label="Open menu">
+                <div class="hamburger-bars">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Slide-out Menu Panel -->
+<div id="sideMenu" class="side-menu">
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    
+    <div class="menu-panel">
+        <button id="closeMenu" class="menu-close" aria-label="Close menu">×</button>
+        
+        <div class="menu-title-area">
+            <h2 class="menu-main-title">NCSS කුප්පිය</h2>
+            <p class="menu-sub-text">Select Your Medium</p>
+        </div>
+        
+        <div class="menu-category">
+            <h3 class="category-title">English Medium</h3>
+            <div class="category-links">
+                <a href="BIO EN.html" class="menu-item"><span class="item-icon">🧬</span> Biology</a>
+                <a href="chemistry-english.html" class="menu-item"><span class="item-icon">🧪</span> Chemistry</a>
+                <a href="physics-english.html" class="menu-item"><span class="item-icon">⚛️</span> Physics</a>
+                <a href="combined-maths-english.html" class="menu-item"><span class="item-icon">📐</span> Combined Maths</a>
+                <a href="ict-english.html" class="menu-item"><span class="item-icon">💻</span> ICT</a>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h3 class="category-title sinhala-font">සිංහල මාධ්‍ය</h3>
+            <div class="category-links">
+                <a href="biology-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">🧬</span> ජීවවිද්‍යාව</a>
+                <a href="chemistry-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">🧪</span> රසායන විද්‍යාව</a>
+                <a href="physics-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">⚛️</span> භෞතික විද්‍යාව</a>
+                <a href="combined-maths-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">📐</span> සංයුක්ත ගණිතය</a>
+                <a href="ict-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">💻</span> තොරතුරු තාක්ෂණය</a>
+            </div>
+        </div>
+        
+        <div class="menu-contact">
+            <a href="#footer" class="contact-link" id="menuContact">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Back Button -->
+        <a href="SINHALA MED.html" class="back-button sinhala-font">
+            <span class="mr-2">←</span>
+            සිංහල මාධ්‍ය වෙත ආපසු
+        </a>
+
+        <!-- Page Title -->
+        <h1 class="page-title sinhala-font">Combined Mathematics - සිංහල මාධ්‍ය</h1>
+        <p class="page-subtitle sinhala-font">සම්පූර්ණ උසස් පෙළ සංයුක්ත ගණිතය සම්පත්</p>
+
+        <!-- Tab Navigation -->
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+            <button class="tab-button active sinhala-font" data-tab="short-notes">📝 කෙටි සටහන්</button>
+            <button class="tab-button sinhala-font" data-tab="provincial-papers">🏛️ පළාත් ප්‍රශ්න පත්‍ර</button>
+            <button class="tab-button sinhala-font" data-tab="notes">📘 සටහන්</button>
+            <button class="tab-button sinhala-font" data-tab="classified-questions">📊 වර්ගීකරණය කළ ප්‍රශ්න</button>
+            <button class="tab-button sinhala-font" data-tab="past-papers">📄 පසුගිය විභාග ප්‍රශ්න</button>
+        </div>
+        
+        <!-- Short Notes Tab -->
+        <div class="tab-content active" id="short-notes">
+            <h2 class="text-3xl font-bold mb-6 text-white text-center sinhala-font">කෙටි සටහන්</h2>
+            <div class="space-y-4">
+                <!-- Complex Numbers -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සංකීර්ණ සංඛ්‍යා</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">සංකීර්ණ සංඛ්‍යා පාඩම සඳහා කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1sPxk1AJNNfIGDteln1coNa1ndobYadLQ/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Limit -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සීමාව</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">සීමාව පාඩම සඳහා කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/186br2lGc9kxKUxP5cbPz4TdrYtnlNJGU/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vectors and Coplaner Force Systems -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">දෛශික හා ඒකතල බල පද්ධති</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">දෛශික හා ඒකතල බල පද්ධති පාඩම සඳහා කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1MboqGTCYIyC9Bq6EtuB_uY7o1m9XNEIb/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Additional Short Notes -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සංයුක්ත ගණිතය කෙටි සටහන්</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">සංයුක්ත ගණිතය සඳහා අතිරේක කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1Urk3YhceWeSEXlaXfsmG6jZy8lxtdsU9/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Newton's laws of Motion and Impulse -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">නිව්ටන් නියම හා ගම්‍යතාව</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">නිව්ටන් නියම හා ගම්‍යතාව පාඩම සඳහා කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/15OkF8CB7amDeSMQKKJ048uiN-QSzvfdh/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Velocity-Time Curves -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ප්‍රවේග කාල ප්‍රස්තාර</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">ප්‍රවේග කාල ප්‍රස්තාර පාඩම සඳහා කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1gw3218Z-KlVosfA9l1hCrru1zODQ4ADr/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Rectilinear Motion -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සරල රේඛීය චලිතය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">සරල රේඛීය චලිතය පාඩම සඳහා කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1TB2LOqUNDLu3KkmqxY-fPx2Hk9668Qnv/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සංඛ්‍යානය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">සංඛ්‍යානය පාඩම සඳහා කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1TcbIu_M--kzsXS5DaMeknLpSS8Uh_TfV/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Relative motion and Circular motion -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සාපේක්ෂ චලිතය හා වෘත්ත චලිතය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">සාපේක්ෂ චලිතය හා වෘත්ත චලිතය පාඩම සඳහා කෙටි සටහන්</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1VFv79DoxMGQS5qMwcMSLekw7B0Z4nRYA/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Provincial Papers Tab -->
+        <div class="tab-content" id="provincial-papers">
+            <h2 class="text-3xl font-bold mb-6 text-white text-center sinhala-font">පළාත් ප්‍රශ්න පත්‍ර</h2>
+            
+            <!-- Grade 13 Section -->
+            <div class="grade-section">
+                <h3 class="grade-title sinhala-font">ශ්‍රේණිය 13</h3>
+                
+                <!-- Grade 13 - 3rd Term -->
+                <div class="term-section">
+                    <h4 class="term-title sinhala-font">තෙවන වාරය</h4>
+                    <div class="space-y-4">
+                        <!-- 2019 Southern Province 3rd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2019 දකුණු පළාත - තෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2019 දකුණු පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1uJQWslYDGJBMG4WRxXcsq3-J7kuLQ6zd/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2022 North Central Province 3rd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2022 උතුරු මැද පළාත - තෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2022 උතුරු මැද පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1VAJ8eicfInNFetqhOXvLpPyBFlFYTQGD/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2022 North Western Province 3rd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2022 වයඹ පළාත - තෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2022 වයඹ පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1ncGNZJiimzchC5lDgf9js3ISV40YzUml/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2022 Sabaragamuwa Province 3rd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2022 සබරගමුව පළාත - තෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2022 සබරගමුව පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1uTcc6UpB9woajb50BJxaqz9KJmIKQ6J4/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2022 Southern Province 3rd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2022 දකුණු පළාත - තෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2022 දකුණු පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1z4hanf3p-6ErFMezZ2yN_BxFKXYFvQ4M/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2022 Uva Province 3rd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2022 ඌව පළාත - තෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2022 ඌව පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1iKXDcpbWGrpWzDcX29_0BKf-80O6aTXh/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Additional Provincial Paper -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">තවත් පළාත් ප්‍රශ්න පත්‍රය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">අතිරේක පළාත් ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1ktKJ9KxYvsEeKQc3AXu6qovmUy_nSiIb/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grade 13 - 2nd Term -->
+                <div class="term-section">
+                    <h4 class="term-title sinhala-font">දෙවන වාරය</h4>
+                    <div class="space-y-4">
+                        <!-- 2020 Southern Province 2nd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2020 දකුණු පළාත - දෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2020 දකුණු පළාත දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය (පිළිතුරු සහිත)</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1OBpYmOx8nP6i2QJ8P019TJvgNu4M1E6T/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2020 Southern Province 2nd Term (Additional) -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2020 දකුණු පළාත - දෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2020 දකුණු පළාත දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය (පිළිතුරු සහිත)</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/127iVSa5zqZvu7A7f4Ckk_HcYPlpVJleK/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade 12 Section -->
+            <div class="grade-section">
+                <h3 class="grade-title sinhala-font">ශ්‍රේණිය 12</h3>
+                
+                <!-- Grade 12 - 3rd Term -->
+                <div class="term-section">
+                    <h4 class="term-title sinhala-font">තෙවන වාරය</h4>
+                    <div class="space-y-4">
+                        <!-- 2022 Uva Province 3rd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2022 ඌව පළාත - තෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2022 ඌව පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1500UEUgznhnllBSwon6ESpf0H7IElOPP/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2019 Southern Province 3rd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2019 දකුණු පළාත - තෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2019 දකුණු පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1MWlv3nAkWD0NSWzG1beVlYEyUoYkYD6K/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grade 12 - 2nd Term -->
+                <div class="term-section">
+                    <h4 class="term-title sinhala-font">දෙවන වාරය</h4>
+                    <div class="space-y-4">
+                        <!-- 2019 Southern Province 2nd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2019 දකුණු පළාත - දෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2019 දකුණු පළාත දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1z-XDtGkJRsq2v4Iqz581dEKkU_djHGk2/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2020 Southern Province 2nd Term -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2020 දකුණු පළාත - දෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2020 දකුණු පළාත දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය (පිළිතුරු සහිත)</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1Sln-QtlRSCGSbSOBVO49l5CH1BxTXJ_c/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2020 Southern Province 2nd Term (Additional) -->
+                        <div class="resource-item">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2020 දකුණු පළාත - දෙවන වාරය</h3>
+                                    <p class="text-gray-300 mb-2 sinhala-font">2020 දකුණු පළාත දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය (පිළිතුරු සහිත)</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1c2Q2EvB_K8sR6Y9WXJoR5_-g58Dg9J4r/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                    බාගන්න
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Tab -->
+        <div class="tab-content" id="notes">
+            <h2 class="text-3xl font-bold mb-6 text-white text-center sinhala-font">සටහන්</h2>
+            
+            <!-- Applied Mathematics Notes Category -->
+            <div class="notes-category">
+                <h3 class="notes-category-title sinhala-font">ව්‍යවහාරික ගණිතය සටහන්</h3>
+                <div class="space-y-4">
+                    <!-- Velocity Time Curves -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ප්‍රවේග කාල ප්‍රස්තාර</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">ප්‍රවේග කාල ප්‍රස්තාර පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1PnwKX3WuZefxHg7ZZMD_MDxUemvqr_VO/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Rectilinear Motion -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සරල රේඛීය චලිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">සරල රේඛීය චලිතය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1DcvF178HKELQE-MLV6BSeHY3SqRHO25o/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Relative motion and Circular motion -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සාපේක්ෂ චලිතය හා වෘත්ත චලිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">සාපේක්ෂ චලිතය හා වෘත්ත චලිතය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1Y6rIHqWA6yiw0asjljadwqrfPIlXKcRr/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Newton's laws of Motion and Impulse -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">නිව්ටන් නියම හා ගම්‍යතාව</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">නිව්ටන් නියම හා ගම්‍යතාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/16J7rgWXvF7ruUZdFKk0WBJmANZur2O-i/view?usp=drive_link" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pure Mathematics Notes Category -->
+            <div class="notes-category">
+                <h3 class="notes-category-title sinhala-font">ශුද්ධ ගණිතය සටහන්</h3>
+                <div class="space-y-4">
+                    <!-- Matrices and Determinants -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">න්‍යාස හා නිශ්චායක</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">න්‍යාස හා නිශ්චායක පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1Xamwco1D6T9Y-T2ArIWH7YBqo-wSizZi/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Complex Numbers -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සංකීර්ණ සංඛ්‍යා</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">සංකීර්ණ සංඛ්‍යා පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1a7H93Q_C41fvJQ1q1X9A9FIV1g5B9dXB/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Algebra -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">වීජ ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">වීජ ගණිතය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1iBiQsoXKCLL-zAQ7bHeB80jjd7CjXc21/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Limit -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සීමාව</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">සීමාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1xgQaE-u7Bd2GBQESQO_HsOY4Cy36xazQ/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Differential Calculus -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">අවකලනය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">අවකලනය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1FSK8YalEIVs4WgUSyMnHmxrzF9H0h6lX/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Trigonometry -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ත්‍රිකෝණමිතිය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">ත්‍රිකෝණමිතිය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1b-s2OySk16NJ3_hUEeJTKFvXcgcuFUdS/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Integrals and Complex Numbers -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">අනුකලනය හා සංකීර්ණ සංඛ්‍යා</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">අනුකලනය හා සංකීර්ණ සංඛ්‍යා පාඩම් සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1M-xraQaBe-8BCov_Am4jUPuTGVmvVrWO/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Coordinate Geometry -->
+                    <div class="resource-item">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ඛණ්ඩාංක ජ්‍යාමිතිය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">ඛණ්ඩාංක ජ්‍යාමිතිය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1wy31huULyqqpbr4iXwFr_mA4pIrgJdSk/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                                බාගන්න
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Classified Questions Tab -->
+        <div class="tab-content" id="classified-questions">
+            <h2 class="text-3xl font-bold mb-6 text-white text-center sinhala-font">වර්ගීකරණය කළ ප්‍රශ්න</h2>
+            
+            <div class="space-y-4">
+                <!-- Circle -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">වෘත්තය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">වෘත්තය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1IcvOXqaWhLAqThn5ty0ClAzM4fN1NwdT/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1kPS1LXXgjIa2pDdonojuNjkqcxj3xii2/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Frame Structures -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">රාමු සැකිලි</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">රාමු සැකිලි පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/18W8D8iYWYq1UAsDh-8JuGUZnl1_S18Ax/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/17YHzJgRDwNCARtvj0Svb5R6rVotukp3j/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Center of Gravity -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ගුරුත්ව කේන්ද්‍රය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ගුරුත්ව කේන්ද්‍රය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1EQPMMj5SqLdyBzDzRvyp4VARr-QOCqDj/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1LMCN4jfA-xiy6A1q_UzeKqlmDPK8eVjv/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Relative Velocity -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සාපේක්ෂ ප්‍රවේගය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සාපේක්ෂ ප්‍රවේගය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1RRGRP2-gVSmSbeq1amYEb46xnwN8NknE/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1L1b3PITS4gX4FCa7AN7ouUvT-oqdu2th/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Projectile -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ප්‍රක්ෂිප්ත</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ප්‍රක්ෂිප්ත පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1enpe3kQJQX5PmnYClOjr0dvJZ-xGjGtL/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/12lmLaXsvjxTxIa-mXJ9bxmZG4nyZSvvW/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Remainder Theorem -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ශේෂ ප්‍රමේයය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ශේෂ ප්‍රමේයය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1opDfSTiA2kyq19IvwFuaF8_MeD7YfLGr/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/130wE_X56Z40ME9lLj55t3duXX9UbvLRn/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Inequalities and Modulus -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">අසමානතා මාපාංක</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අසමානතා මාපාංක පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/19D67mpFDNA1_Ykf9HEIDjAZDj6Asw6hk/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/15xHMzLHUMOhHkBs7fY2v-Akr26sYII7Y/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Differentiation -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">අවකලනය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අවකලනය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1tzoLSAAwN8mkZtrpdDoMslbdSphKJHiE/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1AqPlZpcE2dPaBzw1Au8I5xuFZvflQyNx/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vectors -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">දෛශික</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">දෛශික පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1kTfM1SLAzTr6eS2yo6ImmWAZ65qsxlwx/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1BolpkHRMa-l9qscsH157LRwYMg_OFoFH/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quadratic Equations -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">වර්ගජ සමීකරණ</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">වර්ගජ සමීකරණ පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/14hUwrUExbH61mJeuDMD0TIqDDHReBA61/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1QnzpaJRstjtcFplbVxKcv236Z_uHdmGA/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Friction -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ඝර්ෂණය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ඝර්ෂණය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1oo5u9HBmg9iF1QYOuWa7wYr1epozsV3Y/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1SGSrzqiMz3ctlXiIrh81dAO0clIRnA7H/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Linear Motion and Velocity-Time Curves -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">රේඛීය චලිතය ප්‍රවේග කාල ප්‍රස්තාර</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">රේඛීය චලිතය ප්‍රවේග කාල ප්‍රස්තාර පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1XvFmC63BWc4NkOW5mqaO-6FoBTLzdKRi/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1ktLfxnaStU5Yjwfaf_yd9l4NjWD6sE2f/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Trigonometry -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ත්‍රිකෝණමිතිය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ත්‍රිකෝණමිතිය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1KOLSVWJcDSDt__dSnkbUIRxPQV0MEqSw/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1yjgtvOOxMST1w6Gty97E7x_lYdl_eVf3/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Force Equilibrium and Connected Rods -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">බල සමතුලිතතාව හා සන්දිකල දඩු</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">බල සමතුලිතතාව හා සන්දිකල දඩු පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1z17rG4r7LPGMX4Sizo19iTc0odxCDtaa/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/107vJNgME5CoAR1LfOJaMY_RE5oYxsBEE/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Circular Motion -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">වෘත්ත චලිතය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">වෘත්ත චලිතය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1cVV-9HSsCUYzv87l52vzpxEVrqpNMXxD/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/18DpkeW9Pu3cUGg9hsSUjyLLtx8Vs8kcL/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Limit and Differentiation -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සීමාව හා අවකලනය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සීමාව හා අවකලනය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1zErBhSdjLTxPYJFyWGi4r4J5UcYHguIm/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/19EM4w2imZ4ivPpLPgtj4BOQdIEDlE7qF/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Integration -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">අනුකලනය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අනුකලනය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1Y3n_k8tQK5FEBvBNDOSAJC4VuZIAnd6v/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1GqquEh5BpLo_UN9b6kxFqAYhBJ7jsBtG/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Relative Acceleration and Momentum -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සාපේක්ෂ ත්වරණය හා ගම්‍යතාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සාපේක්ෂ ත්වරණය හා ගම්‍යතාව පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1TBoquwxMuHwFGE0c75mSUPHFqGA0xKBl/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1J-CGu6N33cDceAeKxlgsKernISDnrOoV/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Simple Harmonic Motion -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සරල අනුවර්තීය චලිතය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සරල අනුවර්තීය චලිතය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1GvTDrL3vL5ky7lnCiJYiyqT9MbCxpWam/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1_yiXhbiT6YEY4Pbt6aPlON8IuRhH3Ixz/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Straight Line -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සරල රේඛාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සරල රේඛාව පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1nhRHm7E1acoooFd_MxviE4WQ_5aUxZDg/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1nHjRcYJ61foKDrdn1xt4zlTlJssZ4dc4/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Series -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ශ්‍රේණි</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ශ්‍රේණි පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/10mlM3lpzT4Pk8ir_0wibzlxwZazkSDLO/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/11t3ln8OYGI4N3pTXQpqBWXXjhJyJxZKR/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Power -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">බලය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">බලය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1P6qVHy-GcayARzarqOMjqbNnZM497aZT/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/17NOhVyUF7rhH5vpKsWg_6rLuCVG-cG9u/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Probability -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සම්භාවිතාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සම්භාවිතාව පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/15qBnNiSA1_G87fOmLFZ0Mc_hoMTFP-9y/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1A4F-hU8uiA4cxBcNJcstF49QNc15Tlj4/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Permutations and Combinations -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සංකරණ හා සංයෝජන</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සංකරණ හා සංයෝජන පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1XRztMmUDAT8131rEpHJYR2SxDWUT8RLO/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1AjZSoiumbbYSTEKwdHDFueYIlV3ND6Nl/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සංඛ්‍යානය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සංඛ්‍යානය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1i6no4bMFi9ENKZXFuU8f7Xy_22U10LCD/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1CQXVxTt380HaaMhp03g_89GmlExHuLl1/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mathematical Induction -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ගණිත අභ්‍යුහනය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ගණිත අභ්‍යුහනය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1Tnbz9nqOE8dw4UbBg42iGADDMiRdi_zQ/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1DN-wUHA7U7y5Ij3GfSjYJU6xjd029h3N/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Binomial Expansion -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ද්විපද ප්‍රසාරණය</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ද්විපද ප්‍රසාරණය පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1V0WbRelAS6gs0XPpcQHwQKwrYXxZ2ZMH/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1g03fODr5O_VAtU6WlEaK1YyC7zcWRM9c/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Work, Energy, Efficiency -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">කාර්යය, ශක්තිය, ක්ෂමතාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">කාර්යය, ශක්තිය, ක්ෂමතාව පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1nngXvWlxvewsSC4IC5WXKSSmz7hQkSnw/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1glvVN8Er9AW-gR1FVzcbDDGZQspIViBm/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Impulse and Collisions -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">ආවේගය හා ගැටුම්</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ආවේගය හා ගැටුම් පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1GErzS3EiTJSYNA4S_Dh0NuxJ4XUfJDhI/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1yAMEB9B9QgT7G-n81vcIyPxjJh62iIf4/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Complex Numbers -->
+                <div class="classified-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">සංකීර්ණ සංඛ්‍යා</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සංකීර්ණ සංඛ්‍යා පාඩම සඳහා වර්ගීකෘත ප්‍රශ්න සහ පිළිතුරු</p>
+                    </div>
+                    <div class="classified-links">
+                        <a href="https://drive.google.com/file/d/1ouGoaCOibxYb7t-d0GvkNs2CpCj2CC5Z/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1RRzg9VIYHyNNxznd3iXV7LTnucVBKLhk/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Past Papers Tab -->
+        <div class="tab-content" id="past-papers">
+            <h2 class="text-3xl font-bold mb-6 text-white text-center sinhala-font">පසුගිය විභාග ප්‍රශ්න</h2>
+            
+            <div class="space-y-6">
+                <!-- 2024 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2024</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2024 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2024 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/15lRyRf2-mmxNrEGrY5-ulyGxW0twnpj-/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ප්‍රශ්න පත්‍රය
+                                </a>
+                                <a href="https://drive.google.com/file/d/15s0t7_-tjWfc7edrrDkD-_Qc7f5LDuHI/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    පිලිතුරු යෝජනා
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2023</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2023 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2023 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/15l0nNM-13TOYAlDCbQpasJcAvLqK8z6u/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ප්‍රශ්න පත්‍රය
+                                </a>
+                                <a href="https://drive.google.com/file/d/15llJo4BWw11KZ-nIhVznpPKsu5SsnF8h/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    පිලිතුරු යෝජනා
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2022 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2022</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2022 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2022 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/15l0nNM-13TOYAlDCbQpasJcAvLqK8z6u/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ප්‍රශ්න පත්‍රය
+                                </a>
+                                <a href="https://drive.google.com/file/d/15llJo4BWw11KZ-nIhVznpPKsu5SsnF8h/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    පිලිතුරු යෝජනා
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2021 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2021</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2021 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2021 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1MM_xnrm4PXy9oqHXuHo1_8Ad_ZezopUO/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ප්‍රශ්න පත්‍රය
+                                </a>
+                                <a href="https://drive.google.com/file/d/13uDjsOms3rd6HLwYBcoXskf78JbjY2vX/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    පිලිතුරු යෝජනා
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2020 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2020</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2020 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2020 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1B-85EkqRwjEyZ2eplVLzS51V6GXAxfHn/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1guFUxbCdHr4jt7ZkQIZlDdD3VZnEkAGX/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1IqoHDfBVaqKnoRIlhZ0Tk4Oq880uWFsD/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1HQ1-pOcljD74UXSW_d6q_H67Ck2l02v8/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2019 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2019</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2019 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2019 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1O0ifBMNK0yjsnHSFjbtzAt4EpAbm7wPG/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1yR9jUnV7BxEA-imeNhnCejZxcEu-Gb_C/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1RE2hUlZ-f0LVfriadF_ryQ8WWqAgyJR2/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/19Pnvtt33931Ikf8Mjq6-hLeXhN_-jgVI/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2018 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2018</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2018 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2018 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1dZWuWXw7o44PdFGpJjkxdQv8c2Lrf2MP/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/17bv7HKpI3kmmD_PJndndoZgN_h_wlCox/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1XQOlNQjFeVHPlEurIFuVF_oGyWcvPhOP/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/16yv7Gt0aGHhRVkGFBwj1Sq-HeX8PU0bP/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2017 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2017</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2017 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2017 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1P8-IecIRxaYlC-zdjyGvOgLsitkrsWuS/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1qKmUGMpNKOA_aYgUFqkDQZ73dfpZ2Oeo/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1Sq2c7PogQ4Au6o5A35SwIkjWCbwEWG3n/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1e4oFARrxm6KR04JWf842WxVmPSDQ1eg9/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2016 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2016</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2016 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2016 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1ligpghVAeNdCyQq7IDIo1h1k9TxQNU6p/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1MKV6ehimjKWFovgQYkOuRkgPrYt9lvp5/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1q4cuLpXXOX7oKFYwnPI5TY1yyNL2tpEA/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1qwRwe-hBD_lw3bojgA7fPDI4jqy-IpUo/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2015 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2015</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2015 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2015 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1cSpe948ZpG6dBKuewc0IgQ3PKIM8vxs6/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1Bl4Ana22GyF9TE5Wo_4yiDUUVXqhLYgn/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1nJht7cNHJZ74k3-u4yfrMKGeKTcDhrZ2/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1ylFZbMJWCyjWzYhTAQ0mrUWXcJK2yIKI/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2014 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2014</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2014 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2014 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1XRlLGMLRDUGY07q5g_dlQTO3KSkibtP7/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1e_QvGl21MYThzr40mLR2qyzzF9pN6q4a/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1IZHXskhXjWIqq7txKw67lqH0rFjI7oph/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1whPCLv6Quo4fhis96vvMJQTpSLT81Vwl/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2013 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2013</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2013 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2013 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1YkyMJe8wvhnXwHEXA_RZdZ08gPBfJUg5/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1_Tu0MIf9Re8Sm_GLBKoCsfzmkwn3meX-/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1g-HopgsSx8cH0IK6KGdQaVhr4tlxbY_-/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1S_IG2iE9xXzH31_T3RzzHuKfpxma00Ed/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2012 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2012</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2012 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2012 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1zVcJIKUyXWpuEnpSU2fV2cRta1NVFXTN/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1q-9xdVb1SOEHlfaSTrSyRs_pDZ6JeTBa/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1xaK-f5LRI4VR560P0s4RN63yIaRmD0FA/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1ASam20FYSyarOzYnYPVfkndrSjsdrccI/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2011 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2011</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2011 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2011 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1yrBtL1o_3EjNQnj-vHMohjg02MLSGkJg/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1KcIA9JLeMBPLXhNO8-dIirl_W8cJNvJD/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1UYQaFIC4HPhxtHTAElv7iQnepTVEmUG_/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1Y1bsEY06pvNkCy-kKk25HCUM_MmIPPdH/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2010 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2010</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2010 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2010 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1PB9wjNIIlSarbm0bIa4XuY88Z6zkXEPc/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1lKApLlRNwZzfW8UpQpjvnQTigVtTSD_R/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1tQRT1_wO71PFvP0fNh9sy3JzxFoQHQkR/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/14DLeRonoeF6mfYSlo5iXqT-6llso3v3l/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2009 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2009</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2009 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2009 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1u29LUmnQK5wAkBW2uZEkXgxwOVPgBRxc/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1Q5CVVyXNYJsdGedV9xJx6B3LDE1MWcRI/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1Fle3CBvKMTMpTJTFFPxgoZEgIVKK0Z55/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1XqKyN8Wfv4v40zCCuriCwDNnh3eEuaGf/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2008 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2008</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2008 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2008 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1WRkBwVsDaNK7UZqrn8LVTk_2JJaQn-fa/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/14MmcGWZjp6V2O4ZpYhc-PsgHhmitfwiN/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1eIixd-3-Es4dPRj_Gg7IloKDGuuu-zmM/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1x-Pbw8i65NFW0swTTpCWHizbMpYuDJ5-/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2007 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2007</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2007 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2007 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1VDinkG2qhXMnNhW0s63Li3dVUkL0_Xfo/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1tNv7ejXSGA2-e-lMSLyOeEt_PMg0oVHg/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1l_1JDTjdfVWSWH_F53ASmzTmwWZIZP48/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1j5Hw01SZs5A--7yiiH1kyWCSATsuJw5g/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2006 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2006</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2006 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2006 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1r8F3x2d1F1Ns8_mqUHgPb3IUuZF8ia4x/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1N4cDHFR-eima-vhOdCUzTi9kRdUG8Lcc/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1TT7JWxAEWeNaJCXTJJ8ah5v1_atR25LK/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1wJZLUcxCFwhKfcxXO5T_b7Ln8qmO0qZU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2005 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2005</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2005 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2005 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1DY3fxVhnDbzxfIp7-YoYoPAFGiaqcpIk/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/14wBOvhzg7Fv_7kSJJYgV555LZ_igP2op/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1hKWkRgwrWpoMlPoaQk6dmeOw0bFSuN4q/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1ESWkJ3r0YcJYMwR-qo9kqINg3K4yE32H/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2004 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2004</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2004 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2004 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1X-PHYpq5qzMh4DmWFAbZPZ2VpOe9EfxE/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1f496b9lZSIq7icPWezftQSfmrcvywepU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1MRunVBuZfPO_VpJwj6v7DJUsb0FA8m2x/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1fRNF85z8TJvKQfspfBetpUNXYgpC2EA9/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2003 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2003</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2003 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2003 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1T6IFr23LXGo8BP8oOQF8uSyhm2TM3veA/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/193-Awuvg1CcHguEZnExwzvS5pnnzIITE/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1c4Vqacy18tC5-NiKUd4qg6q0n_txW752/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1-_OLS6VI43izAuvit7lkPTR9ReydK3jv/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2002 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2002</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2002 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2002 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1vD1v08GoTZR0a_GLoibdxiAm3aN788yx/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1C3XEPXjagckrg9p1L5wOVk9L845HD3qD/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1t6Is6woUXD2z4FIarn_gaGpqvB0I1VPx/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1OAggXeTZ9aHtGfg4P2yR4DH4ySoNEYGi/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2001 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2001</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2001 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2001 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1weJl-JKuQPhzNXzNO_2CbeFHEKUjJhhN/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1OsLyIiTOP4dpVYssAGOHoRCuyEl_mf7B/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1yokvu1or2M8MjFQjhsyVaH1L7R4kXo4q/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/18xVF4jSj0m_-uxY65qzVTupVhf94JEsg/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2000 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">2000</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">2000 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">2000 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1AukjMwIS0u71GK7jS8spU6rJWjNA2Vxj/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1UewZvJx9dympJ7SU6P8HtPwRWoNP3Jln/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1KAUV_16tiTUZ5-WYTV4qrxg5uKyAZ6Up/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1fK3dt4BvgL8bM4bqEaA2dgY2_rP6m3Da/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1999 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1999</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1999 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1999 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1V3gTpMTSmqE_Ruqxws6HJGZkOdC_2Sfr/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1OXK38uzUYE_pl2R98w9IOKLuUfDiwYu8/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1Fle3CBvKMTMpTJTFFPxgoZEgIVKK0Z55/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1XqKyN8Wfv4v40zCCuriCwDNnh3eEuaGf/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1998 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1998</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1998 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1998 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1Mi8oD7daee_NlkP_hN-N8BB_P4tGL7TA/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1_5luCsMGJhnV8rsy49M7tnmfYVCJGSCU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1eIixd-3-Es4dPRj_Gg7IloKDGuuu-zmM/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1x-Pbw8i65NFW0swTTpCWHizbMpYuDJ5-/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1997 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1997</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1997 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1997 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1PZc4Qzh7fB3YnBVKAy6SQ26uiuCYwQFr/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1GLfN1jySZDwybGmeacoT7svZ__qQcpzT/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1l_1JDTjdfVWSWH_F53ASmzTmwWZIZP48/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1j5Hw01SZs5A--7yiiH1kyWCSATsuJw5g/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1996 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1996</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1996 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1996 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1MzQ_wEJoI3zNR-1aCRVf0pJNQNdP8uM7/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1hp6UND4Ut9biz-Yzfgnun7s0IATmCMrs/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1TT7JWxAEWeNaJCXTJJ8ah5v1_atR25LK/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1wJZLUcxCFwhKfcxXO5T_b7Ln8qmO0qZU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1995 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1995</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1995 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1995 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1Kbk9PSvDsQHZS4l9oxY5XXrtb8hUV_2X/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1Q0rzh-DiPNyEE9amzj4V8HTpMMmwzth4/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1hKWkRgwrWpoMlPoaQk6dmeOw0bFSuN4q/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1ESWkJ3r0YcJYMwR-qo9kqINg3K4yE32H/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1994 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1994</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1994 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1994 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1KAfqZJ6JZ9PI1KNFRsYuIP9RYN_q-emi/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1HUaCyxPbEbHQ7uyULuFi0UxXZ035ahC3/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1MRunVBuZfPO_VpJwj6v7DJUsb0FA8m2x/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1fRNF85z8TJvKQfspfBetpUNXYgpC2EA9/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1993 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1993</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1993 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1993 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1Xg8c3MuKfnn6rUqiaqNXKDht3Pzam_L8/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1dOfw12PfxCp6V7Rq-LhmtydksDE7irau/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1c4Vqacy18tC5-NiKUd4qg6q0n_txW752/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1-_OLS6VI43izAuvit7lkPTR9ReydK3jv/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1992 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1992</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1992 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1992 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1ATJbKIR0Xee2f-ttIyEOzOrZ5-d-pMux/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1XC4iF4DCkZ54tM-j8iEWNNE-5CePjB3b/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1xaK-f5LRI4VR560P0s4RN63yIaRmD0FA/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1ASam20FYSyarOzYnYPVfkndrSjsdrccI/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1991 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1991</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1991 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1991 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1m91eh2pEKHgJVz3OJ_SwZqIcrLd6apnL/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1OuSrb9gsaHV4U8F6fP0OYvFnG15K2wly/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1UYQaFIC4HPhxtHTAElv7iQnepTVEmUG_/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/1Y1bsEY06pvNkCy-kKk25HCUM_MmIPPdH/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1990 -->
+                <div class="grade-section">
+                    <h3 class="grade-title sinhala-font">1990</h3>
+                    <div class="space-y-4">
+                        <div class="past-paper-item">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-blue-300 mb-2 sinhala-font">1990 උසස් පෙළ සංයුක්ත ගණිතය</h3>
+                                <p class="text-gray-300 mb-2 sinhala-font">1990 උසස් පෙළ සංයුක්ත ගණිතය ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                            </div>
+                            <div class="paper-links">
+                                <a href="https://drive.google.com/file/d/1CVi7D7oVeOG1BrDsx3t26I7vIo6tzoZ-/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1SIUG7sGq64Q3l1fFP8zeutBehdvQsuSm/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය ප්‍රශ්න
+                                </a>
+                                <a href="https://drive.google.com/file/d/1tQRT1_wO71PFvP0fNh9sy3JzxFoQHQkR/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ව්‍යවහාරික ගණිතය පිලිතුරු
+                                </a>
+                                <a href="https://drive.google.com/file/d/14DLeRonoeF6mfYSlo5iXqT-6llso3v3l/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                                    ශුද්ධ ගණිතය පිලිතුරු
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- ========== COMPLETE FOOTER HTML (from index) ========== -->
+<!-- Copy this and replace the entire <footer> section in your BIO_EN.html -->
+
+<footer class="footer" role="contentinfo" id="footer">
+    <div class="footer-content">
+        <!-- Social Media Icons -->
+        <div class="social-icons" role="navigation" aria-label="Social Media Links">
+            <a href="https://web.facebook.com/ncsslk" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our Facebook page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/nalanda_science_society/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our Instagram page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/nalandancss?s=20" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our X (Twitter) page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            <a href="https://whatsapp.com/channel/0029VaozV2m0LKZIxJ7iml3J" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Join our WhatsApp Channel">
+                <img src="images/whatsapp-svgrepo-com.svg" alt="WhatsApp" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </a>
+            <a href="https://www.youtube.com/@NalandaCollegeScienceSociety" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our YouTube channel">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links">
+            <a href="https://ncss.site" target="_blank" rel="noopener noreferrer" class="footer-link">Official NCSS Website</a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            <p>&copy; 2025 Nalanda College Science Society. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        /* ========== UPDATED SCRIPTS FOR BIO_EN.html ========== */
+/* This combines: (1) Tab switching (BIO page-specific), (2) Header scroll, (3) Hamburger menu functionality (from index) */
+
+    // ========== TAB SWITCHING FUNCTIONALITY (BIO page-specific) ==========
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Show corresponding content
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // ========== STICKY HEADER ON SCROLL (from index) ==========
+    const header = document.getElementById('mainHeader');
+    const subHeaderBar = document.getElementById('subHeaderBar');
+    
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        
+        if (scrollPosition > 50) {
+            header.classList.add('scrolled');
+            if (subHeaderBar) {
+                subHeaderBar.classList.add('hidden');
+            }
+        } else {
+            header.classList.remove('scrolled');
+            if (subHeaderBar) {
+                subHeaderBar.classList.remove('hidden');
+            }
+        }
+    });
+
+    // ========== MENU FUNCTIONALITY (from index) ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Get elements
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        const menuContact = document.getElementById('menuContact');
+        
+        // Open menu
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                sideMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        // Close menu - X button
+        if (closeMenu) {
+            closeMenu.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu - click on backdrop (outside panel)
+        if (menuBackdrop) {
+            menuBackdrop.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu - Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && sideMenu.classList.contains('active')) {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Contact Us link - scroll to footer
+        if (menuContact) {
+            menuContact.addEventListener('click', function(event) {
+                event.preventDefault();
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                setTimeout(function() {
+                    const footer = document.querySelector('footer');
+                    if (footer) {
+                        footer.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 300);
+            });
+        }
+        
+        // Close menu when clicking any other menu link
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                setTimeout(function() {
+                    sideMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 300);
+            });
+        });
+    });
+
+    // ========== SMOOTH SCROLL FOR ANCHOR LINKS (from index) ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    </script>
+    <script src="font-override.js"></script>
+</body>
+</html>

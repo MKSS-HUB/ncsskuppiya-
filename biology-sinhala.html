@@ -1,0 +1,3811 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology - Sinhala Medium | NCSS Kuppiya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="css-fixes.css">
+    <style>
+        /* ========== UPDATED STYLES FOR biology-sinhala.html ========== */
+/* This combines: (1) Common base styles, (2) Biology Sinhala page-specific styles, (3) Header/Footer styles from index */
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            padding-top: 0 !important;
+        }
+
+        /* Add space after main header for content */
+        main {
+            margin-top: 2rem !important;
+        }
+
+        /* ========== SUB-HEADER BAR STYLES ========== */
+        .sub-header-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: linear-gradient(135deg, 
+                rgba(192, 192, 192, 0.25) 0%, 
+                rgba(169, 169, 169, 0.2) 50%,
+                rgba(192, 192, 192, 0.25) 100%);
+            backdrop-filter: blur(15px) saturate(150%);
+            -webkit-backdrop-filter: blur(15px) saturate(150%);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 2rem;
+            z-index: 9990;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .sub-header-bar.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .sub-header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+
+        .sub-header-logo {
+            height: 2rem;
+            width: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .sub-header-logo.left {
+            margin-right: 0;
+        }
+
+        .sub-header-logo.right {
+            margin-left: 0;
+        }
+
+        .sub-header-text {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.95);
+            text-transform: uppercase;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        /* Enhanced Dark Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(76, 175, 80, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%) !important;
+        }
+
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: floatOrb 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #4CAF50, #66bb6a);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #4CAF50, #c0c0c0);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            50% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+            75% {
+                transform: translate(30px, 50px) scale(1.05);
+            }
+        }
+
+        .sinhala-font {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) translateX(0);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-20px) translateX(10px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.9; }
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(76, 175, 80, 0.3), 0 0 20px rgba(76, 175, 80, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(76, 175, 80, 0.5), 0 0 30px rgba(76, 175, 80, 0.3);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-load {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .animate-float {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        /* Enhanced Glass Effects */
+        .bg-glass {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                var(--glass-color, rgba(255, 255, 255, 0.05)) 100%
+            );
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* ========== HEADER STYLES (from index) ========== */
+        .header-glass {
+            background: linear-gradient(45deg, 
+                rgba(128, 0, 0, 0.9) 0%, 
+                rgba(90, 0, 0, 0.85) 50%,
+                rgba(128, 0, 0, 0.9) 100%);
+            backdrop-filter: blur(25px) saturate(200%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 40px rgba(0, 0, 0, 0.4),
+                0 8px 60px rgba(128, 0, 0, 0.3),
+                inset 0 0 24px rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-glass.scrolled {
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Logo Container - Adjusted position */
+        .logo-container-adjusted {
+            display: flex;
+            align-items: center;
+            margin-left: 1.5rem;
+        }
+
+        .logo-link-adjusted {
+            display: block;
+            text-decoration: none;
+        }
+
+        .logo-adjusted {
+            width: 200px;
+            height: auto;
+            display: block;
+            filter: 
+                drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))
+                drop-shadow(0 8px 16px rgba(128, 0, 0, 0.6))
+                drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
+            transition: all 0.3s ease;
+        }
+
+        .logo-link-adjusted:hover .logo-adjusted {
+            transform: scale(1.08);
+            filter: 
+                drop-shadow(0 6px 12px rgba(0, 0, 0, 0.9))
+                drop-shadow(0 12px 24px rgba(128, 0, 0, 0.8))
+                drop-shadow(0 0 25px rgba(0, 0, 0, 0.5));
+        }
+
+        /* Hamburger on Right */
+        .hamburger-right {
+            background: rgba(128, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+        }
+
+        .hamburger-right:hover {
+            background: rgba(128, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hamburger-bars {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .hamburger-bars .bar {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            margin: 3px 0;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-right:hover .bar {
+            background: #c0c0c0;
+        }
+
+        /* Side Menu Panel */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+        }
+
+        .side-menu.active {
+            display: block;
+        }
+
+        .menu-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+
+        .menu-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 350px;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(128, 0, 0, 0.97) 0%, 
+                rgba(90, 0, 0, 0.95) 50%,
+                rgba(128, 0, 0, 0.97) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: -8px 0 40px rgba(0, 0, 0, 0.5);
+            padding: 1.5rem;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .side-menu.active .menu-panel {
+            transform: translateX(0);
+        }
+
+        .menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .menu-title-area {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-main-title {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-sub-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .menu-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .category-title {
+            color: #c0c0c0;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+        }
+
+        .category-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.7rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        .item-icon {
+            margin-right: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .menu-contact {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-link {
+            display: block;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.9), rgba(255, 255, 255, 0.9));
+            color: #800000;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ========== FOOTER STYLES (from index) ========== */
+        .footer {
+            background: linear-gradient(135deg, 
+                rgba(128, 0, 0, 0.9) 0%, 
+                rgba(90, 0, 0, 0.85) 50%,
+                rgba(128, 0, 0, 0.9) 100%);
+            backdrop-filter: blur(25px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.4);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 1.5rem;
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        /* ========== BIOLOGY SINHALA PAGE-SPECIFIC STYLES ========== */
+        /* Tab Styles - Enhanced */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-button {
+            padding: 1rem 2rem;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-button.active {
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            transform: translateY(-2px);
+            border-color: rgba(76, 175, 80, 0.5);
+            box-shadow: 
+                0 8px 25px rgba(76, 175, 80, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-button:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Enhanced Resource Items */
+        .resource-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #4CAF50;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .resource-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .year-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #4CAF50;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .year-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                0 0 25px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Enhanced Button Styles */
+        .download-btn {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 15px rgba(76, 175, 80, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 20px rgba(76, 175, 80, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .download-btn-outline {
+            background: transparent;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .download-btn-outline:hover {
+            background: #4CAF50;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .marking-btn {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 15px rgba(255, 152, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .marking-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 20px rgba(255, 152, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* Enhanced Page Title Styling */
+        .page-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 50%, #388e3c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin: 2rem 0 1rem 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        .page-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            color: #c0c0c0;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        /* Section Titles - Fixed to White */
+        .section-title {
+            color: #ffffff !important;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Enhanced Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(-5px);
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.4),
+                0 0 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .file-size {
+            font-size: 0.875rem;
+            color: #c0c0c0;
+            margin-top: 0.25rem;
+        }
+
+        .resource-badge {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .missing-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .paper-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Hover effects */
+        .hovered-element {
+            transition: all 0.3s ease;
+        }
+
+        .hovered-element:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(76, 175, 80, 0.2);
+        }
+
+        /* ========== RESPONSIVE STYLES ========== */
+        @media (max-width: 1024px) {
+            .logo-adjusted {
+                width: 180px;
+            }
+            .logo-container-adjusted {
+                margin-left: 1.25rem;
+            }
+            .sub-header-bar {
+                padding: 0.5rem 1.5rem;
+            }
+            .sub-header-content {
+                gap: 0.4rem;
+            }
+            .sub-header-logo {
+                height: 1.8rem;
+            }
+            .sub-header-text {
+                font-size: 0.7rem;
+                letter-spacing: 0.12em;
+            }
+            body {
+                padding-top: 2.8rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-adjusted {
+                width: 160px;
+            }
+            .logo-container-adjusted {
+                margin-left: 1rem;
+            }
+            .hamburger-right {
+                width: 45px;
+                height: 45px;
+                margin-right: 0.75rem;
+            }
+            .menu-panel {
+                width: 300px;
+                padding: 1.25rem;
+            }
+            .paper-grid {
+                grid-template-columns: 1fr;
+            }
+            .sub-header-bar {
+                padding: 0.45rem 1rem;
+            }
+            .sub-header-content {
+                gap: 0.4rem;
+            }
+            .sub-header-logo {
+                height: 1.5rem;
+            }
+            .sub-header-text {
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+            }
+            body {
+                padding-top: 2.4rem !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo-adjusted {
+                width: 140px;
+            }
+            .logo-container-adjusted {
+                margin-left: 0.75rem;
+            }
+            .sub-header-bar {
+                padding: 0.4rem 0.75rem;
+            }
+            .sub-header-content {
+                gap: 0.3rem;
+            }
+            .sub-header-logo {
+                height: 1.3rem;
+            }
+            .sub-header-text {
+                font-size: 0.55rem;
+                letter-spacing: 0.08em;
+            }
+            body {
+                padding-top: 2.1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-adjusted {
+                width: 120px;
+            }
+            .logo-container-adjusted {
+                margin-left: 0.5rem;
+            }
+            .menu-panel {
+                width: 280px;
+            }
+            .sub-header-text {
+                font-size: 0.5rem;
+                letter-spacing: 0.05em;
+            }
+            body {
+                padding-top: 1.9rem !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo-adjusted {
+                width: 100px;
+            }
+            .sub-header-logo {
+                height: 1rem;
+            }
+            .sub-header-text {
+                font-size: 0.45rem;
+                letter-spacing: 0.03em;
+            }
+            body {
+                padding-top: 1.7rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="page-load">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+    </div>
+
+    <!-- Header -->
+    <!-- ========== COMPLETE HEADER HTML (from index) ========== -->
+<!-- Copy this and replace the entire <header> section in your BIO_EN.html -->
+
+
+
+<!-- Header - Logo Left (adjusted), Hamburger Right -->
+<header class="text-white p-0 w-full shadow-lg header-glass rounded-b-3xl transition-all duration-300" id="mainHeader" role="banner">
+    <div class="container mx-auto px-4 py-3 sm:px-6 sm:py-4">
+        <div class="flex items-center justify-between w-full">
+            <!-- Left: Logo Only - Adjusted -->
+            <div class="logo-container-adjusted">
+                <a href="index.html" class="logo-link-adjusted">
+                    <img src="images/Kuppiya png.png" 
+                         alt="NCSS Kuppiya Logo" 
+                         class="logo-adjusted">
+                </a>
+            </div>
+            
+            <!-- Right: Hamburger Menu -->
+            <button id="menuToggle" class="hamburger-right" aria-label="Open menu">
+                <div class="hamburger-bars">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Slide-out Menu Panel -->
+<div id="sideMenu" class="side-menu">
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    
+    <div class="menu-panel">
+        <button id="closeMenu" class="menu-close" aria-label="Close menu">×</button>
+        
+        <div class="menu-title-area">
+            <h2 class="menu-main-title">NCSS කුප්පිය</h2>
+            <p class="menu-sub-text">Select Your Medium</p>
+        </div>
+        
+        <div class="menu-category">
+            <h3 class="category-title">English Medium</h3>
+            <div class="category-links">
+                <a href="BIO EN.html" class="menu-item"><span class="item-icon">🧬</span> Biology</a>
+                <a href="chemistry-english.html" class="menu-item"><span class="item-icon">🧪</span> Chemistry</a>
+                <a href="physics-english.html" class="menu-item"><span class="item-icon">⚛️</span> Physics</a>
+                <a href="combined-maths-english.html" class="menu-item"><span class="item-icon">📐</span> Combined Maths</a>
+                <a href="ict-english.html" class="menu-item"><span class="item-icon">💻</span> ICT</a>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h3 class="category-title sinhala-font">සිංහල මාධ්‍ය</h3>
+            <div class="category-links">
+                <a href="biology-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">🧬</span> ජීවවිද්‍යාව</a>
+                <a href="chemistry-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">🧪</span> රසායන විද්‍යාව</a>
+                <a href="physics-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">⚛️</span> භෞතික විද්‍යාව</a>
+                <a href="combined-maths-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">📐</span> සංයුක්ත ගණිතය</a>
+                <a href="ict-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">💻</span> තොරතුරු තාක්ෂණය</a>
+            </div>
+        </div>
+        
+        <div class="menu-contact">
+            <a href="#footer" class="contact-link" id="menuContact">Contact Us</a>
+        </div>
+    </div>
+</div>    
+
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Back Button -->
+        <a href="SINHALA MED.html" class="back-button sinhala-font">
+            <span class="mr-2">←</span>
+            සිංහල මාධ්‍ය වෙත ආපසු
+        </a>
+
+        <!-- Page Title -->
+        <h1 class="page-title sinhala-font">Biology - සිංහල මාධ්‍ය</h1>
+        <p class="page-subtitle sinhala-font">සම්පූර්ණ උසස් පෙළ ජීව විද්‍යාව සම්පත්</p>
+
+        <!-- Tab Navigation -->
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+            <button class="tab-button active sinhala-font" data-tab="short-notes">📝 කෙටි සටහන්</button>
+            <button class="tab-button sinhala-font" data-tab="resource-books">📚 සම්පත් පොත්</button>
+            <button class="tab-button sinhala-font" data-tab="provincial-papers">🏛️ පළාත් ප්‍රශ්න පත්‍ර</button>
+            <button class="tab-button sinhala-font" data-tab="practical-books">🔬 ක්‍රියාකාරකම පොත්</button>
+            <button class="tab-button sinhala-font" data-tab="notes">📘 සටහන්</button>
+            <button class="tab-button sinhala-font" data-tab="past-papers">📄 පසුගිය විභාග ප්‍රශ්න</button>
+        </div>
+        
+        <!-- Short Notes Tab -->
+        <div class="tab-content active" id="short-notes">
+    <h2 class="text-3xl font-bold mb-6 section-title sinhala-font">කෙටි සටහන්</h2>
+    <div class="space-y-4">
+        <!-- Short Note 1 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වා දීම - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වා දීම පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/151KyBzRCi9rXF1xL2qrXiSBc25GSAq_K/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 2 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජලය - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ජලය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/15EdrC6bKGogHvsSmMqVtQltiNFHOHUk8/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 3 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්ලාස්ම පටලය</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ප්ලාස්ම පටලය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1KIloPV57m1XoDdSFgPNAQyL7eZxeNydD/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 4 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">කාබෝහයිඩ්‍රේට් - කෙටි සටහන</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">කාබෝහයිඩ්‍රේට් පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1DjyTXnQUeOKNFpjmYufUWQxFGWGnJhxM/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 5 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ලිපිඩ - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ලිපිඩ පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1UTfpS9fvCMCs2jixudFxZvx8TY5i6CYI/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 6 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්‍රෝටීන - කෙටි සටහන</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ප්‍රෝටීන පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/163sCqIouEzDe_cBCZvi5JOSNRsJJ3f5s/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 7 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">න්‍යශ්ටික අම්ල - Mind Map (1 කොටස)</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">න්‍යශ්ටික අම්ල පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1N0h4xl7m1gT_0mSXN0NtFMtiXJLR0m8K/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 8 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">න්‍යශ්ටික අම්ල - 2 කොටස</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">න්‍යශ්ටික අම්ල පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1sT9FFXMtiu8y_8pRWiZOemDHo9w1koPU/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 9 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සෛල පිළිබඳ ඉතිහාසය හා සෛල සංවිධානය</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සෛල පිළිබඳ ඉතිහාසය හා සෛල සංවිධානය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1EvPmZUxvHdszBnA0zgQjrRoY9J9vHuLP/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 10 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සෛල ව්‍යුහය හා කෘත්‍ය - මයිටකොන්ඩ්‍රියා හා හරිතලවය</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සෛල ව්‍යුහය හා කෘත්‍ය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1_exX5TbIJwnrW0hJNfl3ITnLKDfa-41Z/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 11 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සෛල ව්‍යුහ හා කෘත්‍ය - න්‍යෂ්ටිය</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සෛල ව්‍යුහය හා කෘත්‍ය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1BP_q3-UoE33M9wsUwV8Y2YgbYHuVWMDh/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 12 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">තනි පටලමය ඉන්ද්‍රිකා - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">තනි පටලමය ඉන්ද්‍රිකා පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1VTT_zHDPiiEYasnmqize-M6xqEifP53W/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 13 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්‍රෝටීන වල ව්‍යුහ මට්ටම් හා කෘත්‍යන්</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ප්‍රෝටීන පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1DIAiZg1z30WaHWGuxCFqBa8L7NW3GpM7/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 14 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සෛල ව්‍යුහය හා කෘත්‍ය - රයිබසෝම, කේන්ද්‍රිකාව හා සෛල සැකිල්ල</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සෛල ව්‍යුහය හා කෘත්‍ය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1ZP46GopBqrSSHJfu1Q3ncEb2Ey-VAVTI/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 15 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සෛල සන්ධි - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සෛල සන්ධි පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1dB4Nd6K5fvyC9NNxpMlH-Q5rj7IuiK9N/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 16 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සෛල බිත්තිය - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සෛල බිත්තිය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1U-HAh8m6JNRDiYOY90LFH6podAeFMxbI/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 17 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්ලාස්ම බන්ධ හා සත්ව සෛල වල බහිෂ්සෛලීය පූරකය</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ප්ලාස්ම බන්ධ පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1mTbagDrpRBJ3qV66MyfEzAbl2HMMmglM/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 18 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">එන්සයිම Essay Marking</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">එන්සයිම පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1RNLnuMPv7ZkkJ4bnR6S5zfb3LjcO_QqK/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 19 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සෛල චක්‍රය හා අනූනන විභාජනය - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සෛල චක්‍රය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1MpO6Ox0pe6u9eHn1JiN6nfnv1fpwVHcr/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 20 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සෛල විභාජන ක්‍රියාවලි ඌනනය I හා II</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සෛල විභාජන පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1zxhJEaBPL61cM4D1uWzdjqstB0caXj2b/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 21 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පිළිකා හා අර්බුද - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">පිළිකා පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/12BsGuJz2MrYX_Puq9ZC4LvRahPc8Ri6-/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 22 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පරිවෘත්තීය ක්‍රියාවලිවල ශක්ති සම්බන්ධතා</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">පරිවෘත්තීය ක්‍රියාවලි පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1BWwUcukPEVpi73f-e9GpAeIOHSZCDfe3/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 23 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ATP - Mind Map</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ATP පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/12QBilVLxXt7fW8sJEDssu0zp5sCAE8nY/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 24 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">වායු දූෂණයේ ආකාර</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">වායු දූෂණය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1kt3QD7Al-IJCpD0BrmXsT2X4pIdiOyFC/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 25 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Biology නිර්වචන - Grade 13</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">13 ශ්‍රේණිය සඳහා ජීව විද්‍යා නිර්වචන</p>
+                </div>
+                <a href="https://drive.google.com/file/d/100TAw_CXhMBPW0WfigJ1XxTN9aJRQZpY/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 26 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Biology නිර්වචන - Grade 12</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">12 ශ්‍රේණිය සඳහා ජීව විද්‍යා නිර්වචන</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1UfgLKbjKedBPu9kRi5RXvcbgK2E--dOG/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 27 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">DEFINITIONS SM Final</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සම්පූර්ණ ජීව විද්‍යා නිර්වචන</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1wNNOEd93Lad4ydfA4Epcy7GCiip1DKbM/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 28 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Molecular 1</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1RoebTr2jlRTAo4jS2VjMndivysz8nC26/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 29 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Microbiology</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/107qOCfc5WGFJPB1dA1Tl9mlVlyNBFBkn/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 30 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Genetics</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ජාන විද්‍යාව පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1lYpx3Se_KLYewDG8hMxq1IbXjisa5Kf1/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 31 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Environmental biology</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/10P9WFoVW1GndUeI0gmxXOkvNyoKn6Mia/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 32 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Applied biology</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1PwbKss-fS9ukc3ZnFr7mKM2wKTbIXGv1/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 33 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ශාක පෝෂණය - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ශාක පෝෂණය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1RxeGvp4OkbNXmMjsocag-ZvRIq5q1VFR/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 34 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්ලාන්ටේ රාජධානිය - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ප්ලාන්ටේ රාජධානිය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1S0mayl4bHqacPpApe8FnAzVP_vL0G545/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 35 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ශාක පටක - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ශාක පටක පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/11KCVuK7C5Q8R27qW6dvenodxcim_kSvi/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 36 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පරිණාමය - Short Note 01</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">පරිණාමය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/13cIppNAW54-wIpNSKjwH4BWh33kcdiGh/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 37 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 2 - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">Unit 2 පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1akYxaTTph4D4ojDUAXql048gqJB1K4KY/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 38 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පරිණාමය - Short Note 02</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">පරිණාමය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1uvRME1km7PXw_eIALdy2beYPs0ZBfhBu/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 39 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සංසරණ පද්ධතිය - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සංසරණ පද්ධතිය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1UqJ_4mROd4ep_cDTd59JVWOcOrdUFiuk/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 40 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්‍රතිශක්තිය - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ප්‍රතිශක්තිය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1oHF-8Nf5Z2R1O9Xv9eUmUtWTkPXKsldI/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 41 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">බහිස්‍රාවය - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">බහිස්‍රාවය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/19psgNGorTSislSYVDGwPSI7gKlt8E4aT/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 42 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අස්ථි පද්ධතිය - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">අස්ථි පද්ධතිය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16Tvvib0c4M_pORKBRyLg80GNVludbiEa/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 43 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අන්තරාසර්ග - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">අන්තරාසර්ග පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1U0wu3sdzlnbenMAbpGGHQW49UQ1jYLdV/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 44 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්‍රජනනය - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ප්‍රජනනය පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1CLLhsISs-2EN3eMdMUnZTN3ouX5eUl8L/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 45 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">මානව සංවේදක - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">මානව සංවේදක පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1jP-TvTDPNZDTEh71SnFu9bCPtNEfjwmk/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 46 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">මානව කන - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">මානව කන පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/13ZuNWq8Jv0Joj4ZtGVgQsZ9B7JyAd7qd/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Short Note 47 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">මිනිස් ඇස - Short Note</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">මිනිස් ඇස පාඩම සඳහා කෙටි සටහන්</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1-uBkZ_WifjaxpjGXSQC27Tv5ExEoNW7o/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Resource Books Tab -->
+        <div class="tab-content" id="resource-books">
+    <h2 class="text-3xl font-bold mb-6 section-title sinhala-font">සම්පත් පොත්</h2>
+    <div class="space-y-4">
+        <!-- Resource Book 1 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 10 - Applied Biology</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16pnu2JKsehptDuA70sTTaiEUMMdogI4E/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 2 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 09 - Microbiology</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16pFbcbw6AVptQwm3Gyjf2Mi0gKj5Ikkw/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 3 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 08 - Environmental Biology</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16l_TaMu_LSF500XMLt7MbYxAY8yb8klP/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 4 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 07 - Molecular Biology and Recombinant DNA Technology</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව සහ ප්‍රතිසංයෝජිත DNA තාක්ෂණය පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16jMpxSxStfXz-scftPyireELN7ahkECx/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 5 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 06 - Genetics</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ජාන විද්‍යාව පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16ijtzN0D990V7rBYm4vs1JCfLFTQlzYP/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 6 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 05 Part 2 - Animal form and function</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සම්පත් පොත (කොටස 2)</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16i1SMiiJw48aL7eWre8hrcPdUySj1MAK/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 7 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 05 Part 1 - Animal form and function</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සම්පත් පොත (කොටස 1)</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16hqRal6gjCJDiIFssSy7N0FxOgcHmn4j/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 8 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 04 - Plant form and function</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ශාක හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16cj2vCdFEPHV_afejFtKa-JWqpQ8cgYm/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 9 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 03 - Evolution and diversity of organisms</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">සත්ව පරිණාමය සහ විවිධත්වය පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16cU4ly1aaqTEBvJQeSqQ7wQskLGNiTSw/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 10 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 02 - Chemical and cellular basis of life</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16UA0-Ny6PfxGoQ_SxMRQFs6nqXA0bElM/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+
+        <!-- Resource Book 11 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">Unit 01 - Introduction to Biology</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම පාඩම සඳහා සම්පත් පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16U0cbOMJ94MA4uFk9ZNbH8y4IeiUuYBN/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Provincial Papers Tab -->
+        <div class="tab-content" id="provincial-papers">
+    <h2 class="text-3xl font-bold mb-6 section-title sinhala-font">පළාත් ප්‍රශ්න පත්‍ර</h2>
+    
+    <!-- Grade 13 Section -->
+    <div class="grade-section">
+        <h3 class="grade-title sinhala-font">ශ්‍රේණිය 13</h3>
+        
+        <!-- Grade 13 - 3rd Term -->
+        <div class="term-section">
+            <h4 class="term-title sinhala-font">තෙවන වාරය</h4>
+            <div class="space-y-4">
+                <!-- Provincial Paper 1 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2022 ඌව පළාත - තෙවන වාරය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2022 ඌව පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1eL4saU-0Gh_wE6B5a_77JneJrJ-5n9eI/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 2 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2022 දකුණු පළාත - තෙවන වාරය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2022 දකුණු පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1BZU-JRPjhi-Gb8xshmh2YlMhlRFJEDbb/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 3 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2022 සබරගමුව පළාත - තෙවන වාරය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2022 සබරගමුව පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/15GAy6kqlTZtL1uCbnDD_EWuoKQQ2TDoA/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 4 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2021 වයඹ පළාත - තෙවන වාරය (පිලිතුරු සහිත)</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2021 වයඹ පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1njQ2EHkz4PhRJPPpRkHfyl2t3yy2qY5r/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 5 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2021 බස්නාහිර පළාත - තෙවන වාරය (පිලිතුරු සහිත)</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2021 බස්නාහිර පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/14DcwotK17_6Xtyk_OEQ1MHpHsqywKZkC/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 6 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2021 සබරගමුව පළාත - තෙවන වාරය (පිලිතුරු සහිත)</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2021 සබරගමුව පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1AcbECEKgD5T1GX_r-YcIKBtmzQysrz_l/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 7 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2021 ඌව පළාත - තෙවන වාරය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2021 ඌව පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/19piV7_9U7wluI09FR6lu7silQKW39LSr/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 8 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2021 මධ්‍යම පළාත - තෙවන වාරය (පිලිතුරු සහිත)</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2021 මධ්‍යම පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1N8-iOaSsc55cccNxJsFTPYf6lgCGjKwr/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade 13 - 2nd Term -->
+        <div class="term-section">
+            <h4 class="term-title sinhala-font">දෙවන වාරය</h4>
+            <div class="space-y-4">
+                <!-- Provincial Paper 1 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2020 දකුණු පළාත - දෙවන වාරය (පිළිතුරු සහිත)</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2020 දකුණු පළාත දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1HUoBBLnYurtf0tUAvv_YPjSpgS4VMgcx/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 2 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2020 දෙවන වාරය (පිළිතුරු සහිත)</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2020 දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1YpcnK06Az6T51jf54NMQPRE6r3kePU87/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade 13 - 1st Term -->
+        <div class="term-section">
+            <h4 class="term-title sinhala-font">පළමු වාරය</h4>
+            <div class="space-y-4">
+                <!-- Provincial Paper 1 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2020 වයඹ පළාත - පළමු වාරය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2020 වයඹ පළාත පළමු වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1HsnKzHW9yj8zOL-pNB2lSXYhN8hdVLp9/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grade 12 Section -->
+    <div class="grade-section">
+        <h3 class="grade-title sinhala-font">ශ්‍රේණිය 12</h3>
+        
+        <!-- Grade 12 - 3rd Term -->
+        <div class="term-section">
+            <h4 class="term-title sinhala-font">තෙවන වාරය</h4>
+            <div class="space-y-4">
+                <!-- Provincial Paper 1 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2023 දකුණු පළාත - තෙවන වාරය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2023 දකුණු පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1vHFXHnKzeShIX9WC7lNz_zHntETFsrz4/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 2 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2023 වයඹ පළාත - තෙවන වාරය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2023 වයඹ පළාත තෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1HdSWscDy7P3cHsPoP4F7N3-ERPvjlo0W/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade 12 - 2nd Term -->
+        <div class="term-section">
+            <h4 class="term-title sinhala-font">දෙවන වාරය</h4>
+            <div class="space-y-4">
+                <!-- Provincial Paper 1 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2020 දෙවන වාරය</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2020 දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1jpQSx7TaEBdG-t1fFrGB13YdG4GRxEod/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Provincial Paper 2 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2020 දකුණු පළාත - දෙවන වාරය (පිළිතුරු සහිත)</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2020 දකුණු පළාත දෙවන වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1XczM6r_lgKh5oU2su-m5Aw0DOROhmLj5/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade 12 - 1st Term -->
+        <div class="term-section">
+            <h4 class="term-title sinhala-font">පළමු වාරය</h4>
+            <div class="space-y-4">
+                <!-- Provincial Paper 1 -->
+                <div class="resource-item">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2019 වයඹ පළාත - පළමු වාරය (පිළිතුරු සහිත)</h3>
+                            <p class="text-gray-300 mb-2 sinhala-font">2019 වයඹ පළාත පළමු වාර පරීක්ෂණ ප්‍රශ්න පත්‍රය</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1Gmnkar3QsRoEmdm6N8-oRd5fQWWlCET9/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                            බාගන්න
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Practical Books Tab -->
+        <div class="tab-content" id="practical-books">
+    <h2 class="text-3xl font-bold mb-6 section-title sinhala-font">ක්‍රියාකාරකම පොත්</h2>
+    <div class="space-y-4">
+        <!-- Practical Book 1 -->
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව ක්‍රියාකාරකම් අත්පොත</h3>
+                    <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව ක්‍රියාකාරකම් සඳහා සම්පූර්ණ අත්පොත</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1iLR7BBWOlOjzoZ8R5dK5okrsgwxlpPsz/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                    බාගන්න
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Notes Tab -->
+        <div class="tab-content" id="notes">
+    <h2 class="section-title sinhala-font">සටහන්</h2>
+    
+    <!-- Unit 10 Notes Category -->
+    <div class="notes-category">
+        <h3 class="notes-category-title sinhala-font">Unit 10 - ව්‍යවහාරික ජීව විද්‍යාව</h3>
+        <div class="space-y-4">
+            <!-- Note 1 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව සටහන්</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1B_ih2uAeyCHP10aQ2fcVuDrSVMOSFBFy/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව සටහන් 2</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1EwCLas1itN-5ATu_qrhOzJ58v-prZ3I_/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව සටහන් 3</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1QA9dThFr-eFchxDOuB5s4wPpkMHOYuVw/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 4 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">10 වන ඒකකය සහ 1 වන ඒකකය - Mind Map</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ව්‍යවහාරික ජීව විද්‍යාව සහ ජීව විද්‍යාව හදුන්වාදීම පාඩම් සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1QygNv1dY-z1_izB4vtkEghp0ryk80oqC/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit 7 Notes Category -->
+    <div class="notes-category">
+        <h3 class="notes-category-title sinhala-font">Unit 7 - අණුක ජීව විද්‍යාව</h3>
+        <div class="space-y-4">
+            <!-- Note 1 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අණුක ජීව විද්‍යාව සටහන්</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1hujAf7XetAYCUbnaWrPg6R4vD3ZcKRUe/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අණුක ජීව විද්‍යාව සටහන් 2</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1pYH_03lAUSH4cj7oV4097EJIo-sr7ePP/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අණුක ජීව විද්‍යාව සටහන් 3</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1TDPQ__moPgiy-gJ0d7kV97cb92SIv2X9/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 4 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අණුක ජීව විද්‍යාව සටහන් 4</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1D6f86DPkIB6ZxasEHfcINeIBvoTZQNs8/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 5 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අණුක ජීව විද්‍යාව සටහන් 5</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1NCbnujiUXnkhue7bUIj0IzCtZBazMlOe/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 6 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අණුක ජීව විද්‍යාව සටහන් 6</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1Wfh4l3O6P12E1E8PNt0DWT5ghqRQx8fE/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 7 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අණුක ජීව විද්‍යාව සටහන් 7</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1kEpaniXTdm7LKZMPKDmNh8-pMvQVZDyc/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 8 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අණුක ජීව විද්‍යාව සටහන් 8</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අණුක ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1qGquGa9Uz5JQ-rqRR2jneNcC_Bzn6Jsc/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit 8 Notes Category -->
+    <div class="notes-category">
+        <h3 class="notes-category-title sinhala-font">Unit 8 - පාරිසරික ජීව විද්‍යාව</h3>
+        <div class="space-y-4">
+            <!-- Note 1 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">8 වන ඒකකය - Mind Maps සහ ඉලක්කගත රචනා කරුණු</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1IOH6yd3i1leb_lg4EBbrLSn8sLEuUlUj/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව සටහන් 2</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1VbIftzyn0NKGI7TgK9x2Wq2sm3pORxrw/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව සටහන් 3</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1mab26PJnNbvLEAJqtzoY6I7X7Gow4lx2/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 4 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව සටහන් 4</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1uNfL-3_rkGbKYkp8NKX70hl6eJP32qKx/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 5 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව සටහන් 5</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1-lBkc4F7y-pWf-s7HaNQOrQ8ysSULzQp/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 6 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව සටහන් 6</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/12zbvN24QzoEOrx7UFIIMLLkVdHyN39kc/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 7 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව සටහන් 7</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1EAP6L5Y7z-DnFQMueJhBXFhGQ1qWsJ_b/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 8 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව සටහන් 8</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පාරිසරික ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1ZW2-o7EekouwGxFi7pd3NE1G4TYnf0lp/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit 3 Notes Category -->
+    <div class="notes-category">
+        <h3 class="notes-category-title sinhala-font">Unit 3 - පරිණාමය සහ සත්ව විවිධත්වය</h3>
+        <div class="space-y-4">
+            <!-- Note 1 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව සියලුම රචනා - Unit 3</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පරිණාමය සහ සත්ව විවිධත්වය පාඩම සඳහා රචනා</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1Ms0OiJH_cywDzmEZVqW1-_LYkBUTT6Ok/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">3 වන ඒකකය - Mind Maps</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පරිණාමය සහ සත්ව විවිධත්වය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/13_P1exgqNnmlOy6k3YMCVvTUukmBviDL/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පරිණාමය සහ සත්ව විවිධත්වය සටහන් 3</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පරිණාමය සහ සත්ව විවිධත්වය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1gfejM3XiobAImk7HZOZXcEGdQspuiDEk/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 4 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">පරිණාමය සහ සත්ව විවිධත්වය සටහන් 4</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">පරිණාමය සහ සත්ව විවිධත්වය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1nBuxtPADz0vW11upydf5tFCnigg0KySx/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit 5 Notes Category -->
+    <div class="notes-category">
+        <h3 class="notes-category-title sinhala-font">Unit 5 - සත්ව හැඩතල හා ක්‍රියාකාරීත්වය</h3>
+        <div class="space-y-4">
+            <!-- Note 1 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්‍රජනනය - Mind Map 01</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ප්‍රජනනය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1FJfUNSL4ZbRIPXj6Lp-aF-7fECXwZ6YC/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">රුධිර සංසරණය - Mind Map</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">රුධිර සංසරණය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1Zg4-0GvskUpU12jwvH9ZFicNVHkK_alx/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය සටහන් 3</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1lELupAJ7V_dPgW9ipvj98KyfzqWsA9h8/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 4 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ශ්වසනය - Mind Map</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ශ්වසනය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/15tW2DevJERKzrkkkCVdotn9NNvC2BAe-/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 5 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අස්ථි - 02 Mind Map</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අස්ථි පද්ධතිය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1IGu4N-Aea4LPfo3OO3BOw9vP1xwkZyFC/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 6 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">අන්තරාසර්ග පද්ධතිය - Mind Map</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">අන්තරාසර්ග පද්ධතිය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1Vwi3iuKiZCzd4M_44Ba6O_WrWkROPpa2/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 7 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">බහිස්ස්‍රාවය - Mind Map</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">බහිස්ස්‍රාවය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1XWm-VHxKb87lSQs6hDWu2CaMdZYikYzJ/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 8 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ස්නායු පද්ධතිය - Mind Map</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ස්නායු පද්ධතිය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1hnGsGTnwvW8mZFvgTAKEh6D8oq-v2ogB/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 9 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය සටහන් 9</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1iajC6B1g6hSLgBLkVzS6QWzjXflwTJW-/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 10 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්‍රජනනය - Mind Map 02</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ප්‍රජනනය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1tN4LeG_Pb3BH-DscQUMwIQE_TpO5h00o/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 11 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය සටහන් 11</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1OIgiamh49jZ5rQ5YPuTqgWJkjbWTNiLH/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 12 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය සටහන් 12</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1PlU5FNXNcHQDnQrfiy824HyeP4QxKsQt/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 13 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සත්ව පටක</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සත්ව පටක පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1U9H5gJ5x_QVvwhXKBqtTm_PLVUQwUVJ6/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 14 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ප්‍රතිශක්තිය - Mind Map</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ප්‍රතිශක්තිය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1b4x7lC2DauNSp-i0DDMZ-yXESuKtRqH5/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 15 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය සටහන් 15</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සත්ව හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1vx-Af-U7mXQJwuwrFYldZavVrUyxYpl5/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit 1-2 Notes Category -->
+    <div class="notes-category">
+        <h3 class="notes-category-title sinhala-font">Unit 1-2 - ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම</h3>
+        <div class="space-y-4">
+            <!-- Note 1 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම සටහන් 1</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1HjRNpNqdwvdf2Xvf_hJyhbmsEPiqPGbO/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">රචනා සහ ලකුණු 02</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා රචනා</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1IpIDoiXz62fdZiskzKWiMQpuS9AHi2mo/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව ඒකක 1-2 රචනා</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා රචනා</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1Xagda-v_VXEbzyMDnEzwIk7IhXDd8W6c/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 4 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">රචනා සහ ලකුණු 01</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා රචනා</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1ib6HUjaeqz6QS0iQKvjg3-qTe7CGToLU/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 5 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම සටහන් 5</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1DP8jPyfTcfKvHkDhztVvk_4yo-d-mJxi/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 6 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම සටහන් 6</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1ItcfPECpLfFljA4N2U2_joS8cEFqQltt/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 7 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම සටහන් 7</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1OntNgIxsOFN76HCOB5RhhCTRqAZ8TtwZ/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 8 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2 වන ඒකකය - Mind Map 02</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1R43UwHDTsS77XEPrnddrsJsCP-gE7JWy/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 9 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම සටහන් 9</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1Us5-nM_aVUhOhQRZBtB0ZxcxsNzpoNxp/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 10 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම සටහන් 10</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීව විද්‍යාව හදුන්වාදීම සහ ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම් සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1owOKufTCiqLWiSOK-WB8wh6IsvPuSTvF/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 11 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2 වන ඒකකය - Mind Map 01</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ජීවිතයේ රසායනික හා සෛලික පදනම පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1WhqI5FwUEQKzeCdXGdNoFQet53mlt4Ak/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit 9 Notes Category -->
+    <div class="notes-category">
+        <h3 class="notes-category-title sinhala-font">Unit 9 - සුක්ෂ්ම ජීව විද්‍යාව</h3>
+        <div class="space-y-4">
+            <!-- Note 1 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව 4 ප්‍රායෝගික</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව පාඩම සඳහා ප්‍රායෝගික සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/10Dh-AKpEIlniwn-kpYqmmlQtMfMS0_B4/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව සටහන් 2</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/18pwx9UGIcJTubyCT4iteNfpR_gcEqrS9/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව - Mind Map 02 සහ ඉලක්කගත රචනා කරුණු</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1MOcNtPDdegWAQA6o7PoUiQBukYLbhF8-/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 4 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව - Mind Maps සහ ඉලක්කගත රචනා 01</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1YbcXfRZnVjIFrWK5H3ssRq1QZQnrjiMN/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 5 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව - Mind Map 03 සහ ඉලක්කගත රචනා</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1Av5lYeec73-uU_if68j_wCRXdoifB4At/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 6 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව සටහන් 6</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">සුක්ෂ්ම ජීව විද්‍යාව පාඩම සඳහා සම්පූර්ණ සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1gtZKInOOXIKNqv7-6VHLCThO1VeUI4c4/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit 4 Notes Category -->
+    <div class="notes-category">
+        <h3 class="notes-category-title sinhala-font">Unit 4 - ශාක හැඩතල හා ක්‍රියාකාරීත්වය</h3>
+        <div class="space-y-4">
+            <!-- Note 1 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">4 වන ඒකකය - Mind Map සහ ඉලක්කගත රචනා 01</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ශාක හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1ZKklp1kz3ud5tXohFxqbvrDCR_VS1bxA/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 2 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">4 වන ඒකකය - Mind Map සහ ඉලක්කගත රචනා ලකුණු 03</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ශාක හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1sboxhwozZSUgqZ8Jdi4NnpPM8u9AsrKc/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note 3 -->
+            <div class="resource-item">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">4 වන ඒකකය - Mind Map සහ ඉලක්කගත රචනා ලකුණු 02</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">ශාක හැඩතල හා ක්‍රියාකාරීත්වය පාඩම සඳහා සටහන්</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1y32iQCbJpUsLssKr3UIEjg_KMeL0xUp4/view?usp=drivesdk" target="_blank" class="download-btn ml-4 sinhala-font">
+                        බාගන්න
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Past Papers Tab - UPDATED WITH GLOSSY CARDS -->
+        <div class="tab-content" id="past-papers">
+    <h2 class="section-title sinhala-font">පසුගිය විභාග ප්‍රශ්න</h2>
+    
+    <div class="space-y-6">
+        <!-- 2024 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2024</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2024 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2024 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="#" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1RwxE6ttP0QvylKpIFT4iygaaao66wvSR/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2023 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2023</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2023 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2023 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1RMy0WVo1-j_HO5meFVCMr2MLRazVqNhG/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1RwxE6ttP0QvylKpIFT4iygaaao66wvSR/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2022 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2022</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2022 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2022 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1EKeSEvif6lBQ47wuW8xvKAJg4nSBnJHg/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1EQqs2bxeSWHxDzmhxqdB07lfMpZwZBWH/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1sSsWpx5ww4354zSIuEfLDVhggfg3AExe/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2021 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2021</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2021 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2021 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1ybzDSAktbYHZDZDZ4v-lke2TluZcSHf_/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1LAKF9bXYVEecyLnAgLI3v-RvzNg0f_OW/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2020 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2020</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2020 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2020 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1nbXPVAxJL_caTHTzuGruGpDmPmi6FqzN/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1xZFpRutMMWNWD8ZjWc5HBE_l4awxJN20/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1RQEmzQAEW7i2IGsF9PbPdWN79C6XQRCC/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2019 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2019</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2019 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2019 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1TC_hm07zMw9C19xugBOuANOovStIXWcj/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/12vuxfQvKwlXnVDCy7E7kpyk-FJVJU951/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1MnRDAcA7CP21VrCShr_5Acbr32FOhZLZ/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2018 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2018</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2018 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2018 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1rEe-afqwBu-0Y7suxtGDs_LEArdolsc3/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1QtpoxZTum3Ju9SlJ35_WfiCJ8KJFusGX/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1vypIV5Q1WtPddxEQvAfFpecRTdeVhJTx/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය II
+                        </a>
+                        <a href="https://drive.google.com/file/d/12Cu2Cv5u7YRqqP2sG31nEl9uXaEC74qr/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2017 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2017</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2017 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2017 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1ziPZ9YoByre1doIzQ4XwPrnGthrxA4kz/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1C6ey7sPJ0p8XeoY24fulKyjT01TQhwKF/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2016 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2016</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2016 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2016 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1YWjtLz8utTfuU83D31RiP-xM96J17BIi/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1KBTbIA7U7mkffiQDafWRyoW4vb0VLUjf/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1PKR6iMSifTTK5pklGDtcPcyMzyoNvprj/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2015 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2015</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2015 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2015 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1QVr4TauuXwl-98p5th305uG0PT45VA_G/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1hhHQHIn1fRgA2RO8SzGpaobCfN22CzGS/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2014 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2014</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2014 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2014 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1pvRhNNzho9vhs6PDgFZ_JskZMwQm3k8x/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1-vxyPR7Tq9YERScYF76q27JKNWtNJSDb/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1BZW4gNFWtB1X4bmL9k1huf4nFjFxco0F/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2013 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2013</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2013 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2013 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1-oQMvOm9SfoxJJzeVw2J09fq7f7L38hD/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1D6Uok6KPkDj8d64Y-mPmR7scC4tncxsf/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1anVLKz9spF2FwcyaCs-2mZHMg4TF1D9N/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2012 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2012</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2012 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2012 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1rIMLNtB7nWYNVhM8wJtJHmZ1O-Y6Wsde/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/13ETp7F7x_gL1iOiBxFTM_HE26huwfl4T/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/17EV1yddDu6q44qt0463dRbLSRk8t6185/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2011 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2011</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2011 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2011 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/12ZOY3vnCTefzr5tzHy9DPj4az0LqHzTQ/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1WGMhUx0w82YmjIAiPA7qSWLGXfm7KouF/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1CRz3xxMketI1FJNrrTqrQjflxig6di5Z/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2010 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2010</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2010 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2010 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1lIZ1ifSE9_eCTAHFvUBJCxz7ZMcxqyh7/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1_qkRb49nJIv6VDerH5HMKRfkOzHS6fuy/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/18w88_C8cNFXNUvCE-yVAVSTXYBNlvVnH/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2009 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2009</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2009 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2009 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1EPrZtwMCu72T7DDv6Zrc6f95zQ26_PP2/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/154z79GjJL8Me0ugGCDD0MP5iQOZH-_rW/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1cupoqW1L6kv7awMmDazEAEdtapJC7ldz/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2008 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2008</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2008 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2008 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1kvBk0avvdC3jDaeXB8NT9KFXd_VIy5aU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1UT-QEFK0dVjOQiwQcBlglC9-ylIqiiLI/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1-FaQ6vRNAjLi0GinXJjOe_yU5yR3Z3Rz/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2007 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2007</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2007 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2007 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1nNAg1hFxkuDH7Q8O8VLKrRhk3AVGtvit/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1z3c1UYI5KUMkiyMd5UQyYmKI9pm6Pocj/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2006 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2006</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2006 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2006 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1giJM0kHyiXsQxofkOideMBdMcSG-qIGX/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1xGSbBWJ0fPz1kKuwWC9oUhitKEoi_2py/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1boHfXcvnGmWW1fdF-4gu0ovTl3RA2kIs/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2005 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2005</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2005 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2005 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/10GpdLJ88E9D4ZsappgOtAMSUwUpzpXC-/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1h5_nl42UfRN4sXPHoyjKjqp94FcH7UQa/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1KoFbuYDznCQOiwnLrQRfUJQU0Z0cbamr/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2004 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2004</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2004 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2004 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1TWY9lSlcNotMmxwr3Dzp6qb8nXknrGSB/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1XFjkkLMv85yaObz_QnDpULfTsBNR3w8r/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1LjB1s04K29hFUwa6dl5rv4iSG5l9ezu9/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2003 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2003</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2003 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2003 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1byAgB-SVL_tgv1Pg5nn8kWISzYLBpTON/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1axzM3bsCu60_ttIAic6y_AuTqcRR7YuD/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1WIiQ5iiXZgrO2cgTmCme3JBo88l9spCU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2002 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2002</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2002 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2002 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1CHuMnTfQlLa6XtVF56oiCc5Nvs9KmQEn/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/14jIGl7LUN80C7nPirpWrcKld-JSiVcGZ/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1EJ-aeFaJUaxWNkTPwLzYPNrpetnT_FVE/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1Nl9iwMl18HL0iOTHx9bvFUOhWEf0Xi2r/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2001 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2001</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2001 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2001 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1m1S8RvsqO_kuIP_M4zOZ4jGsElTVVUP8/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            බහුවරණ ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1AJMUh9_Hfa-nLSebFDN9or6h7xAduvlZ/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            රචනා ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1jFQ8NUxfVlTQVNQ1iTi6mW5YI2CUoT5t/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2000 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">2000</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">2000 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">2000 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය සහ පිලිතුරු යෝජනා</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1VFKdcBEwMqNCOOLq-4OOuawTAQ3wc65V/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            උද්භිද විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1bv1j6mRTaI8EvmK0t7wTu7Q0VY-ez5pU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රාණි විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1OR_4y8zQ9Pk2UhTLbt2cdVZdKwtFi5bP/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            පිලිතුරු යෝජනා
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1999 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">1999</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">1999 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">1999 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/15_z4Oig6U_1SWARyYIWjHDmRy8FMwa_5/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            උද්භිද විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1WGUs9erYIG6BuuNejrHHrd3f64gQ1xlU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රාණි විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1998 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">1998</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">1998 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">1998 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1A5TxzrewsoRL9voLu2EnL-wbwaeN79IF/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            උද්භිද විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1PDcZ4fNBPOJYvF5eZALmhpWqAT8zid_e/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රාණි විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1997 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">1997</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">1997 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">1997 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1qX0RdnfIaccQEZlukuNk6H8mJew9vo-k/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            උද්භිද විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1g1yXqXqE237CnYcl-MKNLfZFR1OkmRRK/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රාණි විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1996 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">1996</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">1996 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">1996 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1lS7UM3DmsoWjjpdnIOUldIUGfyN1STNU/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            උද්භිද විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                        <a href="https://drive.google.com/file/d/1w3fFAqRz5nbwAjiS0KZcqhZk5tU-ghxD/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රාණි විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1995 -->
+        <div class="grade-section">
+            <h3 class="grade-title sinhala-font">1995</h3>
+            <div class="space-y-4">
+                <div class="past-paper-item">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-xl text-white mb-2 sinhala-font">1995 උසස් පෙළ ජීව විද්‍යාව</h3>
+                        <p class="text-gray-300 mb-2 sinhala-font">1995 උසස් පෙළ ජීව විද්‍යාව ප්‍රශ්න පත්‍රය</p>
+                    </div>
+                    <div class="paper-links">
+                        <a href="https://drive.google.com/file/d/1AKMAqJkyUuqSr_SPMsvbjkgXtGoqr7ue/view?usp=drivesdk" target="_blank" class="download-btn sinhala-font">
+                            ප්‍රාණි විද්‍යාව ප්‍රශ්න පත්‍රය
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <!-- ========== COMPLETE FOOTER HTML (from index) ========== -->
+<!-- Copy this and replace the entire <footer> section in your BIO_EN.html -->
+
+<footer class="footer" role="contentinfo" id="footer">
+    <div class="footer-content">
+        <!-- Social Media Icons -->
+        <div class="social-icons" role="navigation" aria-label="Social Media Links">
+            <a href="https://web.facebook.com/ncsslk" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our Facebook page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/nalanda_science_society/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our Instagram page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/nalandancss?s=20" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our X (Twitter) page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            <a href="https://whatsapp.com/channel/0029VaozV2m0LKZIxJ7iml3J" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Join our WhatsApp Channel">
+                <img src="images/whatsapp-svgrepo-com.svg" alt="WhatsApp" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </a>
+            <a href="https://www.youtube.com/@NalandaCollegeScienceSociety" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our YouTube channel">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links">
+            <a href="https://ncss.site" target="_blank" rel="noopener noreferrer" class="footer-link">Official NCSS Website</a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            <p>&copy; 2025 Nalanda College Science Society. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        /* ========== UPDATED SCRIPTS FOR BIO_EN.html ========== */
+/* This combines: (1) Tab switching (BIO page-specific), (2) Header scroll, (3) Hamburger menu functionality (from index) */
+
+    // ========== TAB SWITCHING FUNCTIONALITY (BIO page-specific) ==========
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Show corresponding content
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // ========== STICKY HEADER ON SCROLL (from index) ==========
+    const header = document.getElementById('mainHeader');
+    const subHeaderBar = document.getElementById('subHeaderBar');
+    
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        
+        if (scrollPosition > 50) {
+            header.classList.add('scrolled');
+            if (subHeaderBar) {
+                subHeaderBar.classList.add('hidden');
+            }
+        } else {
+            header.classList.remove('scrolled');
+            if (subHeaderBar) {
+                subHeaderBar.classList.remove('hidden');
+            }
+        }
+    });
+
+    // ========== MENU FUNCTIONALITY (from index) ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Get elements
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        const menuContact = document.getElementById('menuContact');
+        
+        // Open menu
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                sideMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        // Close menu - X button
+        if (closeMenu) {
+            closeMenu.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu - click on backdrop (outside panel)
+        if (menuBackdrop) {
+            menuBackdrop.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu - Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && sideMenu.classList.contains('active')) {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Contact Us link - scroll to footer
+        if (menuContact) {
+            menuContact.addEventListener('click', function(event) {
+                event.preventDefault();
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                setTimeout(function() {
+                    const footer = document.querySelector('footer');
+                    if (footer) {
+                        footer.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 300);
+            });
+        }
+        
+        // Close menu when clicking any other menu link
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                setTimeout(function() {
+                    sideMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 300);
+            });
+        });
+    });
+
+    // ========== SMOOTH SCROLL FOR ANCHOR LINKS (from index) ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    </script>
+    <script src="font-override.js"></script>
+</body>
+</html>

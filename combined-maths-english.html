@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Maths - English Medium | NCSS Kuppiya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="css-fixes.css">
+    <style>
+    /* ========== UPDATED STYLES FOR combined-maths-english.html ========== */
+/* This combines: (1) Common base styles, (2) Combined Maths English page-specific styles (BLUE THEME), (3) Header/Footer styles from index */
+
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+        color: #ffffff;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+        padding-top: 0;
+    }
+
+    /* Add space after main header for content */
+    main {
+        margin-top: 2rem !important;
+    }
+
+    /* ========== SUB-HEADER BAR STYLES ========== */
+    .sub-header-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: linear-gradient(135deg, 
+            rgba(192, 192, 192, 0.25) 0%, 
+            rgba(169, 169, 169, 0.2) 50%,
+            rgba(192, 192, 192, 0.25) 100%);
+        backdrop-filter: blur(15px) saturate(150%);
+        -webkit-backdrop-filter: blur(15px) saturate(150%);
+        border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+        box-shadow: 
+            0 4px 20px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        padding: 0.6rem 2rem;
+        z-index: 9990;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .sub-header-bar.hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .sub-header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1400px;
+        margin: 0 auto;
+        gap: 0.5rem;
+    }
+
+    .sub-header-logo {
+        height: 2rem;
+        width: auto;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .sub-header-logo.left {
+        margin-right: 0;
+    }
+
+    .sub-header-logo.right {
+        margin-left: 0;
+    }
+
+    .sub-header-text {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: rgba(255, 255, 255, 0.95);
+        text-transform: uppercase;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    /* Enhanced Dark Background - Blue Theme */
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(0, 100, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%) !important;
+    }
+
+    .floating-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        animation: floatOrb 20s infinite ease-in-out;
+    }
+
+    .orb-1 {
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, #3B82F6, #2563EB);
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .orb-2 {
+        width: 350px;
+        height: 350px;
+        background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+        top: 60%;
+        right: 10%;
+        animation-delay: 3s;
+    }
+
+    .orb-3 {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, #3B82F6, #c0c0c0);
+        bottom: 10%;
+        left: 30%;
+        animation-delay: 6s;
+    }
+
+    @keyframes floatOrb {
+        0%, 100% {
+            transform: translate(0, 0) scale(1);
+        }
+        25% {
+            transform: translate(50px, -50px) scale(1.1);
+        }
+        50% {
+            transform: translate(-30px, 30px) scale(0.9);
+        }
+        75% {
+            transform: translate(30px, 50px) scale(1.05);
+        }
+    }
+
+    .sinhala-font {
+        font-family: 'Noto Sans Sinhala', sans-serif;
+    }
+
+    /* Animations */
+    @keyframes float {
+        0%, 100% { 
+            transform: translateY(0) translateX(0);
+            opacity: 0.7;
+        }
+        50% { 
+            transform: translateY(-20px) translateX(10px);
+            opacity: 1;
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.7; }
+        50% { transform: scale(1.1); opacity: 0.9; }
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes shine {
+        0% { left: -100%; }
+        50%, 100% { left: 100%; }
+    }
+
+    @keyframes slideInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes textGlow {
+        0%, 100% {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+        50% {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-load {
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .animate-float {
+        animation: float 8s ease-in-out infinite;
+    }
+
+    .animate-pulse {
+        animation: pulse 4s ease-in-out infinite;
+    }
+
+    /* Enhanced Glass Effects */
+    .bg-glass {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            var(--glass-color, rgba(255, 255, 255, 0.05)) 100%
+        );
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    /* ========== HEADER STYLES (from index) ========== */
+    .header-glass {
+        background: linear-gradient(45deg, 
+            rgba(128, 0, 0, 0.9) 0%, 
+            rgba(90, 0, 0, 0.85) 50%,
+            rgba(128, 0, 0, 0.9) 100%);
+        backdrop-filter: blur(25px) saturate(200%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+            0 4px 40px rgba(0, 0, 0, 0.4),
+            0 8px 60px rgba(128, 0, 0, 0.3),
+            inset 0 0 24px rgba(255, 255, 255, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .header-glass.scrolled {
+        box-shadow: 0 8px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Logo Container - Adjusted position */
+    .logo-container-adjusted {
+        display: flex;
+        align-items: center;
+        margin-left: 1.5rem;
+    }
+
+    .logo-link-adjusted {
+        display: block;
+        text-decoration: none;
+    }
+
+    .logo-adjusted {
+        width: 200px;
+        height: auto;
+        display: block;
+        filter: 
+            drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))
+            drop-shadow(0 8px 16px rgba(128, 0, 0, 0.6))
+            drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
+        transition: all 0.3s ease;
+    }
+
+    .logo-link-adjusted:hover .logo-adjusted {
+        transform: scale(1.08);
+        filter: 
+            drop-shadow(0 6px 12px rgba(0, 0, 0, 0.9))
+            drop-shadow(0 12px 24px rgba(128, 0, 0, 0.8))
+            drop-shadow(0 0 25px rgba(0, 0, 0, 0.5));
+    }
+
+    /* Hamburger on Right */
+    .hamburger-right {
+        background: rgba(128, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-right: 1rem;
+    }
+
+    .hamburger-right:hover {
+        background: rgba(128, 0, 0, 0.5);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hamburger-bars {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+    }
+
+    .hamburger-bars .bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        margin: 3px 0;
+        border-radius: 1px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-right:hover .bar {
+        background: #c0c0c0;
+    }
+
+    /* Side Menu Panel */
+    .side-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: none;
+    }
+
+    .side-menu.active {
+        display: block;
+    }
+
+    .menu-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+    }
+
+    .menu-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 350px;
+        height: 100%;
+        background: linear-gradient(135deg, 
+            rgba(128, 0, 0, 0.97) 0%, 
+            rgba(90, 0, 0, 0.95) 50%,
+            rgba(128, 0, 0, 0.97) 100%);
+        backdrop-filter: blur(20px) saturate(180%);
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.5);
+        padding: 1.5rem;
+        overflow-y: auto;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .side-menu.active .menu-panel {
+        transform: translateX(0);
+    }
+
+    .menu-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .menu-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+    }
+
+    .menu-title-area {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-main-title {
+        font-family: 'Noto Sans Sinhala', sans-serif;
+        font-size: 1.8rem;
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+
+    .menu-sub-text {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+    }
+
+    .menu-category {
+        margin-bottom: 1.5rem;
+    }
+
+    .category-title {
+        color: #c0c0c0;
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(192, 192, 192, 0.3);
+    }
+
+    .category-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 0.7rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .menu-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateX(-5px);
+    }
+
+    .item-icon {
+        margin-right: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    .menu-contact {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-link {
+        display: block;
+        padding: 0.9rem;
+        background: linear-gradient(135deg, rgba(192, 192, 192, 0.9), rgba(255, 255, 255, 0.9));
+        color: #800000;
+        text-align: center;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ========== FOOTER STYLES (from index) ========== */
+    .footer {
+        background: linear-gradient(135deg, 
+            rgba(128, 0, 0, 0.9) 0%, 
+            rgba(90, 0, 0, 0.85) 50%,
+            rgba(128, 0, 0, 0.9) 100%);
+        backdrop-filter: blur(25px);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.4);
+        margin-top: 4rem;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem 1.5rem;
+        color: white;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .social-icon:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-8px) scale(1.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .social-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .footer-link {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: white;
+    }
+
+    .footer-link:hover::after {
+        width: 100%;
+    }
+
+    .footer-copyright {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+    }
+
+    /* ========== COMBINED MATHS ENGLISH PAGE-SPECIFIC STYLES (BLUE THEME) ========== */
+    /* Tab Styles - Enhanced with Blue */
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.5s ease-in;
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    .tab-button {
+        padding: 1rem 2rem;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-weight: 600;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .tab-button.active {
+        background: rgba(59, 130, 246, 0.9);
+        color: white;
+        transform: translateY(-2px);
+        border-color: rgba(59, 130, 246, 0.5);
+        box-shadow: 
+            0 8px 25px rgba(59, 130, 246, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .tab-button:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-1px);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Enhanced Resource Items - Blue Theme */
+    .resource-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        border-left: 4px solid #3B82F6;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .resource-item:hover {
+        transform: translateX(5px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 
+            0 8px 25px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(59, 130, 246, 0.2);
+    }
+
+    .year-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 1rem;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid #3B82F6;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .year-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.4),
+            0 0 25px rgba(59, 130, 246, 0.2);
+    }
+
+    /* Enhanced Button Styles - Blue Theme */
+    .download-btn {
+        background: linear-gradient(135deg, #3B82F6, #2563EB);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+            0 4px 15px rgba(59, 130, 246, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 6px 20px rgba(59, 130, 246, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .download-btn-outline {
+        background: transparent;
+        color: #3B82F6;
+        border: 2px solid #3B82F6;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .download-btn-outline:hover {
+        background: #3B82F6;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .marking-btn {
+        background: linear-gradient(135deg, #60A5FA, #3B82F6);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+            0 4px 15px rgba(96, 165, 250, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .marking-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 6px 20px rgba(96, 165, 250, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    /* Enhanced Page Title Styling - Blue Theme */
+    .page-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+        margin: 2rem 0 1rem 0;
+        text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        animation: textGlow 3s ease-in-out infinite;
+    }
+
+    .page-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.4rem;
+        color: #c0c0c0;
+        text-align: center;
+        margin-bottom: 3rem;
+        opacity: 0.8;
+    }
+
+    /* Enhanced Back Button */
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .back-button:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(-5px);
+        box-shadow: 
+            0 6px 20px rgba(0,0,0,0.4),
+            0 0 15px rgba(59, 130, 246, 0.3);
+    }
+
+    .file-size {
+        font-size: 0.875rem;
+        color: #c0c0c0;
+        margin-top: 0.25rem;
+    }
+
+    .resource-badge {
+        background: linear-gradient(135deg, #3B82F6, #2563EB);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .missing-badge {
+        background: linear-gradient(135deg, #ff6b6b, #ff5252);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .paper-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    /* ========== RESPONSIVE STYLES ========== */
+    @media (max-width: 1024px) {
+        .logo-adjusted {
+            width: 180px;
+        }
+        .logo-container-adjusted {
+            margin-left: 1.25rem;
+        }
+        .sub-header-bar {
+            padding: 0.5rem 1.5rem;
+        }
+        .sub-header-content {
+            gap: 0.4rem;
+        }
+        .sub-header-logo {
+            height: 1.8rem;
+        }
+        .sub-header-text {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+        }
+        body {
+            padding-top: 2.8rem !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .logo-adjusted {
+            width: 160px;
+        }
+        .logo-container-adjusted {
+            margin-left: 1rem;
+        }
+        .hamburger-right {
+            width: 45px;
+            height: 45px;
+            margin-right: 0.75rem;
+        }
+        .menu-panel {
+            width: 300px;
+            padding: 1.25rem;
+        }
+        .paper-grid {
+            grid-template-columns: 1fr;
+        }
+        .sub-header-bar {
+            padding: 0.45rem 1rem;
+        }
+        .sub-header-content {
+            gap: 0.4rem;
+        }
+        .sub-header-logo {
+            height: 1.5rem;
+        }
+        .sub-header-text {
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+        }
+        body {
+            padding-top: 2.4rem !important;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .logo-adjusted {
+            width: 140px;
+        }
+        .logo-container-adjusted {
+            margin-left: 0.75rem;
+        }
+        .sub-header-bar {
+            padding: 0.4rem 0.75rem;
+        }
+        .sub-header-content {
+            gap: 0.3rem;
+        }
+        .sub-header-logo {
+            height: 1.3rem;
+        }
+        .sub-header-text {
+            font-size: 0.55rem;
+            letter-spacing: 0.08em;
+        }
+        body {
+            padding-top: 2.1rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo-adjusted {
+            width: 120px;
+        }
+        .logo-container-adjusted {
+            margin-left: 0.5rem;
+        }
+        .menu-panel {
+            width: 280px;
+        }
+        .sub-header-text {
+            font-size: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        body {
+            padding-top: 1.9rem !important;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .logo-adjusted {
+            width: 100px;
+        }
+        .sub-header-logo {
+            height: 1rem;
+        }
+        .sub-header-text {
+            font-size: 0.45rem;
+            letter-spacing: 0.03em;
+        }
+        body {
+            padding-top: 1.7rem !important;
+        }
+    }
+</style>
+</head>
+<body class="page-load">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+    </div>
+
+    <!-- Header -->
+    <!-- ========== COMPLETE HEADER HTML (from index) ========== -->
+<!-- Copy this and replace the entire <header> section in your BIO_EN.html -->
+
+
+
+<!-- Header - Logo Left (adjusted), Hamburger Right -->
+<header class="text-white p-0 w-full shadow-lg header-glass rounded-b-3xl transition-all duration-300" id="mainHeader" role="banner">
+    <div class="container mx-auto px-4 py-3 sm:px-6 sm:py-4">
+        <div class="flex items-center justify-between w-full">
+            <!-- Left: Logo Only - Adjusted -->
+            <div class="logo-container-adjusted">
+                <a href="index.html" class="logo-link-adjusted">
+                    <img src="images/Kuppiya png.png" 
+                         alt="NCSS Kuppiya Logo" 
+                         class="logo-adjusted">
+                </a>
+            </div>
+            
+            <!-- Right: Hamburger Menu -->
+            <button id="menuToggle" class="hamburger-right" aria-label="Open menu">
+                <div class="hamburger-bars">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Slide-out Menu Panel -->
+<div id="sideMenu" class="side-menu">
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    
+    <div class="menu-panel">
+        <button id="closeMenu" class="menu-close" aria-label="Close menu">×</button>
+        
+        <div class="menu-title-area">
+            <h2 class="menu-main-title">NCSS කුප්පිය</h2>
+            <p class="menu-sub-text">Select Your Medium</p>
+        </div>
+        
+        <div class="menu-category">
+            <h3 class="category-title">English Medium</h3>
+            <div class="category-links">
+                <a href="BIO EN.html" class="menu-item"><span class="item-icon">🧬</span> Biology</a>
+                <a href="chemistry-english.html" class="menu-item"><span class="item-icon">🧪</span> Chemistry</a>
+                <a href="physics-english.html" class="menu-item"><span class="item-icon">⚛️</span> Physics</a>
+                <a href="combined-maths-english.html" class="menu-item"><span class="item-icon">📐</span> Combined Maths</a>
+                <a href="ict-english.html" class="menu-item"><span class="item-icon">💻</span> ICT</a>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h3 class="category-title sinhala-font">සිංහල මාධ්‍ය</h3>
+            <div class="category-links">
+                <a href="biology-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">🧬</span> ජීවවිද්‍යාව</a>
+                <a href="chemistry-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">🧪</span> රසායන විද්‍යාව</a>
+                <a href="physics-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">⚛️</span> භෞතික විද්‍යාව</a>
+                <a href="combined-maths-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">📐</span> සංයුක්ත ගණිතය</a>
+                <a href="ict-sinhala.html" class="menu-item sinhala-font"><span class="item-icon">💻</span> තොරතුරු තාක්ෂණය</a>
+            </div>
+        </div>
+        
+        <div class="menu-contact">
+            <a href="#footer" class="contact-link" id="menuContact">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Back Button -->
+        <a href="ENGLISH MED.html" class="back-button">
+            <span class="mr-2">←</span>
+            Back to English Medium
+        </a>
+
+        <!-- Page Title -->
+        <h1 class="page-title">Combined Maths - English Medium</h1>
+        <p class="page-subtitle">Complete A/L Combined Mathematics Resources (2000-2021)</p>
+
+        <!-- Tab Navigation -->
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+            <button class="tab-button active" data-tab="resource-books">📚 Resource Books</button>
+            <button class="tab-button" data-tab="past-papers">📝 Past Papers & Marking Schemes</button>
+        </div>
+        
+        <!-- Resource Books Tab -->
+        <div class="tab-content active" id="resource-books">
+    <h2 class="text-3xl font-bold mb-6 text-white text-center">Resource Books</h2>
+    <div class="space-y-4">
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-blue-300 mb-2">Combined Maths Statics - Book I</h3>
+                    <p class="text-gray-300 mb-2">Fundamental concepts of statics and mechanics</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16QgK8VqTMfDi92UwRHmzhjzSpHkhEeAw/view?usp=drivesdk" target="_blank" class="download-btn ml-4">
+                    Download
+                </a>
+            </div>
+        </div>
+
+        <div class="resource-item">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h3 class="font-bold text-xl text-blue-300 mb-2">Combined Maths Statics - Book II</h3>
+                    <p class="text-gray-300 mb-2">Advanced statics and mechanical principles</p>
+                </div>
+                <a href="https://drive.google.com/file/d/16RKW5KmRLQRPJoXGMvcduDwffp7RXPa4/view?usp=drivesdk" target="_blank" class="download-btn ml-4">
+                    Download
+                </a>
+            </div>
+        </div>
+    </div>
+</div>       
+        <!-- Past Papers & Marking Schemes Tab -->
+        <div class="tab-content" id="past-papers">
+    <h2 class="text-3xl font-bold mb-6 text-white text-center">Past Papers & Marking Schemes (2000-2021)</h2>
+    
+    <!-- 2021 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4 flex items-center">
+            2021 A/L Examination
+            <span class="resource-badge">Latest</span>
+        </h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/16dlLNdmglteyq6POO9VBbaAOoCNQ8d6I/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/11SFAMD_oVLqa9QU1yNd6avWkhcVmiMsj/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/12BQMc36H8oDNHdRTcx2vlYSXuJKvBJ9s/view?usp=drivesdk" target="_blank" class="download-btn">
+                2021 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1yZ0gFQ9y439Fl17wS2S-WoTdGxlQ0o7m/view?usp=drivesdk" target="_blank" class="download-btn">
+                2021 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2020 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1CFXOF1TLe5ZWdbQDnqi7Nxj6RlAGTSnX/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1sfg_dbPljEMUqEfd1Da4rE8AQ2QDnJCa/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1CFXOF1TLe5ZWdbQDnqi7Nxj6RlAGTSnX/view?usp=drivesdk" target="_blank" class="download-btn">
+                2020 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1VRBrzYI594lu8dbIBiM2HklSIY0yCdX5/view?usp=drivesdk" target="_blank" class="download-btn">
+                2020 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2019 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1LSVbYWrz0Wep5zELhuQDiJff1tcl9o6V/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1wQQ3wJz5FOs2tXQmU0fLW7wAVMQ3nzgw/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1AYY_Hk0NbcnsUK3I0glJv7CmZNdPmKWA/view?usp=drivesdk" target="_blank" class="download-btn">
+                2019 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/17Yu8fVszJGIgMUZAcvoqfYcv0AybaTsV/view?usp=drivesdk" target="_blank" class="download-btn">
+                2019 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2018 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2018 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1a01yKgAsuLZxqQNMh1ul2NgfEc__eJyQ/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1TqGNGnAPUHfu7nN6gGK-aMlo8-9XvDHG/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1XjT2vHbSxeUYMJ4zRlDCXaXyjou9or91/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2018 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1UDve530R8JgQnHrtAXrp-6tmkrQx0UMU/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2018 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2017 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2017 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1uGMREKln33QPjb_6z2y1ZEC1Csch2mH-/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1qfS6yxWCp1vInZWmvdtSkgF31CshTcCd/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1JXVvq97EOE5J63UYfzEa6OH3AgQlNCxs/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2017 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1u_oAvPlEA-JBLTJLGHqwgWwQMcVr_DMZ/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2017 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2016 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2016 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/194BJrCZBBzLSQiz42vqrMF88JjfbbiAX/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/14ihriXz8gWBikxIC9jA6XLQiDSSMAnfg/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1gy0LUC1Qyq4Y5ec6r-dxwNwBYGCaiREZ/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2016 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1ySiGstrh5BELOKtcelleJPewE2nv92cJ/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2016 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2015 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2015 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1s1gSgEfNyU3CsJVBDKqUNZuCElJQpRgl/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1nlhl5VpMVI3PyPoYZR3QwzriksoDPgbd/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1DpHkw0i_q4nkp2DlDthc5bQskMMzCCQn/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2015 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1hci1akzuWr0LfznEpfL2VyrjgUXePygt/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2015 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2014 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2014 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1mJob3N9hJlvaxU4-bRUuZo1fNgv_xpCK/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1xYoeobByTiChQ2GpQ6Rk9YwGTQGVjoa-/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1kTpJpq164gead1EYoCwpYP-xKNb5qpEu/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2014 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1uOQm0quX_M7juWSQ8JfRrUSlFKZHqv2m/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2014 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2013 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2013 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1vtM86HTNFOXiXyobuYEjQ4ezXTveqwTh/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/13fNdInY4rA7alXvCcR-kqiN89bIpzXQd/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/141oU-kP1bpEDwFJkFJMC1RIIyfO0P-Ow/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2013 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1JYyNpKFn8UqntF9DA_zDhvIhmcjQ72kd/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2013 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2012 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2012 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1_YqJZDeCdXU626nLkyMzyd5EBy278UyC/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1Fneg1-gRqQfTD_IJPGthXWm8wtQjWoaY/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1_aGvhJRPufUwzgR9YVnP3vF3Xo7FiL9V/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2012 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1DGPtwJzgOcv2-wptelApRiPiMPEb5nLO/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2012 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2011 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2011 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1dN63oCbnrRJ7wZinjbxhDSR-45w5-2Mj/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1qTS1hJOuyzTeIU-jcRndj_RLOKPp5eXm/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1Q4fdZdHMXfTAB6n_OwmZoKPURC_R0ceI/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2011 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1-7bN4Nvp_7LpdxxwjK0We40eTm2Ovm49/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2011 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2010 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2010 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1pUi71w-RmB5u3aqu1xVsc2HihJyVz1Iu/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/12MAw_1ah4CVVtVTOFqa11Qo8RNLuGPjb/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1lR36iUgbriSKqerUMt3D3xlcU434nvkg/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2010 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1ZbCBMByeFOHczusFlpvPiHBPCvusfdOt/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2010 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2009 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2009 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1nOSsEPQH0I_FiJi-mt38F6u6qD33QJA0/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1iDJOzWjHfPOUBugqfYAyAyIok9_9iHUq/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1L47c4xCkabpHSc68lcX1y2Q5SlrCmum-/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2009 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/14rp3uheISIkl4ZIZQDnb8hmEPlzae2bT/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2009 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2008 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2008 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1IuIA74Q4qPEm7F0sUs-_PWur_APcCvuv/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1rr6H8mc83aEADbxpfl51fiLPgh9voZu0/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1jpr0C2RXrcbVcjGFI4IS_fnw1s7kYMFM/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2008 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1GJHM4teiqFcDAdItHet8hPar85sBD91O/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2008 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2007 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2007 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1kh0-y_JfbsrcaApD_ZxF7I6iaCDlojtF/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1IAb_LzKQEKjt1UbTfoHBidVXwlfER1rY/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1oZEwH5q8WJvkJY-jUa-OpUlmorAOWSVE/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2007 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1GsUEpVaUdgLnC2bXEVG9GH6X2COY9D_p/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2007 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2006 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2006 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1w1QEKMIBwmf-Z1s16Z9CcAN7gSXsFz-k/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1_-3rLS7EPQNSio5p_pPp100xVTc2JiRb/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1KnWVrD62uENojro6I0qhbnAXCCHTJLRT/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2006 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/18r7hS363jWVG5IhBA1TMHOTPmNa1yieO/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2006 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2005 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2005 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1M76O8L00mERivKiZbxnti_Pc7vfx3tUg/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/17pjqbSjkbcF9R7kW3hcX8cdQ1ukFpPbl/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1ItftVJTlMQ8EEIDuJuhrvn5qsm_v_mx5/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2005 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1rvnJz3QqEQwkZYTpNicASVHOotApgUJD/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2005 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2004 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2004 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1Tu1E3FiMSnX6MRl7uri5d0Oi4fFdkAtL/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/11G3ZLZAPpw-GKy0JpPe7dv3wf5NQ5ZsT/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/1hvArvsLilrLohUpmvAq55MZmZLMdVHi2/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2004 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1SOBHbvv5VETutPVOHLueTsZIswe358qm/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2004 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2003 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2003 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1rlE98AjA7gEl3HoPzkpYPlTYGvbnhGxF/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1r8wVCzsD-BwC3ZemsQymfvO-hmE-q6TF/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/15FzSAG9a3X0zmPminRRgkIw39ec_tU3d/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2003 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1Pb_Jjf_DPsRv7UK2r9qjJTkdU2kdSBAs/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2003 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2002 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2002 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1iAtvBPtcNGZBb1TrIgG-oSVQuO94Gc6X/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1WUXsObWzwmXc-WTpirj6-u59IUitGT1i/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/114ITVmtYs2ZRgBocJA8hQ0xTkp4nE6e2/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2002 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1StZjzSQiX31xjV_MAQV-s4I-w1_Pezzv/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2002 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2001 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2001 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/1l7frk8VFYRnxK5MZxPQxiVx_WfDqEjuO/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/1uv1Z5pluWk4ulLKaLt_c363KpAL9wt0q/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/112EmcmyGndaIXPb_n6g1kQS_NnPaLgM6/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2001 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1IjpitjiRkDGgNQjvw4DZIRN7ioflTK39/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2001 Applied Marking
+            </a>
+        </div>
+    </div>
+
+    <!-- 2000 -->
+    <div class="year-card">
+        <h3 class="text-2xl font-bold text-blue-300 mb-4">2000 A/L Examination</h3>
+        <div class="section-title">Past Papers</div>
+        <div class="paper-grid">
+            <a href="https://drive.google.com/file/d/11cu6g_X-9NMINUb4hvdqkxCCYg-3sebM/view?usp=drivesdk" target="_blank" class="download-btn">
+                📐 Pure Maths
+            </a>
+            <a href="https://drive.google.com/file/d/19As_RKfWrMjORd2dp9evXkibzFG71EbA/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                📊 Applied Maths
+            </a>
+        </div>
+        <div class="section-title">Marking Schemes</div>
+        <div class="marking-grid">
+            <a href="https://drive.google.com/file/d/11CPsvQHJ_r13eve49o4wRLTWfG69SQQJ/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2000 Pure Marking
+            </a>
+            <a href="https://drive.google.com/file/d/1S1lzPaIZIyk3HzLIhmxYuInArXs0gEsO/view?usp=drivesdk" target="_blank" class="download-btn-outline">
+                2000 Applied Marking
+            </a>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <!-- ========== COMPLETE FOOTER HTML (from index) ========== -->
+<!-- Copy this and replace the entire <footer> section in your BIO_EN.html -->
+
+<footer class="footer" role="contentinfo" id="footer">
+    <div class="footer-content">
+        <!-- Social Media Icons -->
+        <div class="social-icons" role="navigation" aria-label="Social Media Links">
+            <a href="https://web.facebook.com/ncsslk" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our Facebook page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/nalanda_science_society/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our Instagram page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/nalandancss?s=20" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our X (Twitter) page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            <a href="https://whatsapp.com/channel/0029VaozV2m0LKZIxJ7iml3J" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Join our WhatsApp Channel">
+                <img src="images/whatsapp-svgrepo-com.svg" alt="WhatsApp" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+            </a>
+            <a href="https://www.youtube.com/@NalandaCollegeScienceSociety" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit our YouTube channel">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links">
+            <a href="https://ncss.site" target="_blank" rel="noopener noreferrer" class="footer-link">Official NCSS Website</a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            <p>&copy; 2025 Nalanda College Science Society. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        /* ========== UPDATED SCRIPTS FOR BIO_EN.html ========== */
+/* This combines: (1) Tab switching (BIO page-specific), (2) Header scroll, (3) Hamburger menu functionality (from index) */
+
+    // ========== TAB SWITCHING FUNCTIONALITY (BIO page-specific) ==========
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Show corresponding content
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // ========== STICKY HEADER ON SCROLL (from index) ==========
+    const header = document.getElementById('mainHeader');
+    const subHeaderBar = document.getElementById('subHeaderBar');
+    
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        
+        if (scrollPosition > 50) {
+            header.classList.add('scrolled');
+            if (subHeaderBar) {
+                subHeaderBar.classList.add('hidden');
+            }
+        } else {
+            header.classList.remove('scrolled');
+            if (subHeaderBar) {
+                subHeaderBar.classList.remove('hidden');
+            }
+        }
+    });
+
+    // ========== MENU FUNCTIONALITY (from index) ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Get elements
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        const menuContact = document.getElementById('menuContact');
+        
+        // Open menu
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                sideMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        // Close menu - X button
+        if (closeMenu) {
+            closeMenu.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu - click on backdrop (outside panel)
+        if (menuBackdrop) {
+            menuBackdrop.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close menu - Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && sideMenu.classList.contains('active')) {
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Contact Us link - scroll to footer
+        if (menuContact) {
+            menuContact.addEventListener('click', function(event) {
+                event.preventDefault();
+                sideMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                setTimeout(function() {
+                    const footer = document.querySelector('footer');
+                    if (footer) {
+                        footer.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 300);
+            });
+        }
+        
+        // Close menu when clicking any other menu link
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                setTimeout(function() {
+                    sideMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 300);
+            });
+        });
+    });
+
+    // ========== SMOOTH SCROLL FOR ANCHOR LINKS (from index) ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    </script>
+    <script src="font-override.js"></script>
+</body>
+</html>
